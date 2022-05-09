@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\AllController;
+use App\Http\Controllers\DepositController;
+use App\Http\Controllers\PlansController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,31 +32,30 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
-
-//plans..................//////..............
-Route::get('/addplans', [AllController::class, 'addplans'])->name('addplans')->middleware('auth');
-Route::get('/Manageplans', [AllController::class, 'manageplans'])->name('manageplans')->middleware('auth');
-//add plans
-Route::post('plansadd', [AllController::class, 'plansadd'])->name('plansadd')->middleware('auth');
-//deleteplans
-
-//Deposits...........///....(Admin Area)
-// 1. add_deposits
-// ...(a)view page
-Route::get('/add-deposits', [AllController::class, 'viewadddeposits'])->name('viewadddeposits')->middleware('auth');
-// ...(b)add depoist
-Route::post('/add_deposit', [AllController::class, 'add_deposit'])->name('adddeposit')->middleware('auth');
-// ....(C)Deposit Status
-Route::get('/approve_deposit/{id}', [AllController::class, 'approve_deposit'])->name('approve_deposit')->middleware('auth');
-Route::get('/unapprove_deposit/{id}', [AllController::class, 'unapprove_deposit'])->name('unapprove_deposit')->middleware('auth');
-Route::get('/awaiting_deposit_approval/{id}', [AllController::class, 'awaiting_deposit_approval'])->name('awaiting_deposit_approval')->middleware('auth');
-
-
-
-// 2. Deposits List
-Route::get('/deposits', [AllController::class, 'depositlists'])->name('depositlists')->middleware('auth');
-
-
 // Users ..........///////...
 //User Management
 Route::get('index', [UserController::class, 'index'])->name('index')->middleware('auth');
+
+
+//plans..................///....(Admin Area)
+//1. Pland List
+Route::get('/Manageplans', [WebsiteController::class, 'plans'])->name('manageplans')->middleware('auth');
+//2. Add Plans
+
+Route::get('/addplans', [PlansController::class, 'index'])->name('addplans')->middleware('auth');
+Route::post('plansadd', [PlansController::class, 'create'])->name('plansadd')->middleware('auth');
+
+
+
+//Deposits...........///....(Admin Area)
+// 1. Deposits List
+Route::get('/deposits', [WebsiteController::class, 'deposits'])->name('depositlists')->middleware('auth');
+
+//2. Add Deposits
+Route::get('/add-deposits', [DepositController::class, 'index'])->name('viewadddeposits')->middleware('auth');
+Route::post('/add_deposit', [DepositController::class, 'create'])->name('adddeposit')->middleware('auth');
+
+//3. Deposit Status
+Route::get('/change-deposit-status/{id}', [DepositController::class, 'changeStatus'])->name('changeDepositStatus')->middleware('auth');
+//Route::get('/unapprove_deposit/{id}', [DepositController::class, 'unapprove_deposit'])->name('unapprove_deposit')->middleware('auth');
+//Route::get('/awaiting_deposit_approval/{id}', [DepositController::class, 'awaiting_deposit_approval'])->name('awaiting_deposit_approval')->middleware('auth');

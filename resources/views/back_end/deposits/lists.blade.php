@@ -221,17 +221,17 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('approve_deposit',$deposit->id )}}" class="menu-link px-3">Approve</a>
+                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'approve' ] ) }}" class="menu-link px-3">Approve</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('unapprove_deposit',$deposit->id )}}" class="menu-link px-3">Unapprove</a>
+                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'unapprove' ]) }}" class="menu-link px-3">Unapprove</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('awaiting_deposit_approval',$deposit->id )}}" class="menu-link px-3">Awaiting</a>
+                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'awaiting' ] ) }}" class="menu-link px-3">Awaiting</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>

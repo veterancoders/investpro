@@ -128,11 +128,7 @@ class AllController extends Controller
         
     }
 
-
-
-
-
-    //...deposits list
+    // deposits
     public function depositlists()
     {
         $deposit = Investment::all();
