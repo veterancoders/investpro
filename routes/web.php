@@ -3,6 +3,7 @@
 use App\Http\Controllers\AllController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PlansController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WithdrawalController;
@@ -72,3 +73,12 @@ Route::post('/withdraw', [WithdrawalController::class, 'create'])->name('add_wit
 
 //3. Withdrawal Status
 Route::get('/change-withdrawal-status/{id}', [WithdrawalController::class, 'changeStatus'])->name('changewithdrawalStatus')->middleware('auth');
+
+
+
+//settings.....///....
+Route::get('/view-settings', [WebsiteController::class, 'settings'])->name('view_settings')->middleware('auth');
+Route::post('/settings', [SettingsController::class, 'settings'])->name('settings')->middleware('auth');
+
+
+

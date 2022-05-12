@@ -51,7 +51,7 @@
                         <select class=" form-control form-control-solid mb-2" name="plan_id" data-control="select2" data-search="true" data-placeholder="Select Plan" required>
                             <option></option>
                             @foreach($plans as $plan)
-                            <option value="{{ $plan->id}}">{{ $plan->name }}</option>
+                            <option value="{{ $plan->id}}">{{ $plan->name }}<span>(min: {{ $plan->min}} , max: {{ $plan->max}})</span></option>
                             @endforeach
 
                         </select>

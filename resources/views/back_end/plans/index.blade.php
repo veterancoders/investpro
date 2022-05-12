@@ -173,7 +173,7 @@
                                 <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
                                   
                                     <th class="min-w-125px">Plan Name</th>
-                                    <th class="min-w-125px">Due date</th>
+                                    <th class="min-w-125px">Plan Days</th>
                                     <th class="min-w-125px">Min Amount</th>
                                     <th class="min-w-125px">Max Amount</th>
                                     <th class="min-w-125px">Profit_Percentage</th>
@@ -195,7 +195,7 @@
                                     <!--end::Customer=-->
                                     <!--begin::Status=-->
                                     <td>
-                                       {{ $data->due_date }}
+                                       {{ $data->days }}
                                     </td>
                                     <!--end::Status=-->
                                     <!--begin::Billing=-->
@@ -209,8 +209,11 @@
                                     <!--begin::Date=-->
                                     <td>{{ $data->profit_percentage }}</td> 
                                     
-                                    
+                                    @if(!is_null($data->feature))
                                     <td>{{ $data->feature }}</td>
+                                    @else
+                                    <td style="font-style: italic;">Null</td>
+                                    @endif
                                     <!--end::Date=-->
                                     <!--begin::Action=-->
                                     <td class="text-end">

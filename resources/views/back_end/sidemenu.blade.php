@@ -269,7 +269,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                             </span>
-                            <span class="menu-title">Wallet</span>
+                            <span class="menu-title">Wallet Transactions</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <div class="menu-sub menu-sub-accordion">
@@ -278,18 +278,10 @@
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Manage Wallet</span>
+                                    <span class="menu-title">Transaction list</span>
                                 </a>
                             </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Add Wallet</span>
-                                </a>
-                            </div>
-
+                          
 
                         </div>
                     </div>
@@ -326,22 +318,7 @@
                                     <span class="menu-title">Deposits List | Index</span>
                                 </a>
                             </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Deposit History</span>
-                                </a>
-                            </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Max Deposit</span>
-                                </a>
-                            </div>
+                          
 
 
                         </div>
@@ -372,14 +349,7 @@
                                     <span class="menu-title">Manage Withdrawals</span>
                                 </a>
                             </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="{{ route('add_withdrawal_page')}}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Add Withdrawal</span>
-                                </a>
-                            </div>
+                            
 
                             <div class="menu-item">
                                 <a class="menu-link" href="">
@@ -441,11 +411,11 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link" href="">
+                        <a class="menu-link" href="{{ route('view_settings')}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Security Settings</span>
+                            <span class="menu-title">Settings</span>
                         </a>
                     </div>
 
@@ -487,22 +457,7 @@
                                     <span class="menu-title">Deposits List | Index</span>
                                 </a>
                             </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Deposit History</span>
-                                </a>
-                            </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Max Deposit</span>
-                                </a>
-                            </div>
+                           
 
 
                         </div>
@@ -539,15 +494,6 @@
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title">Add Withdrawal</span>
-                                </a>
-                            </div>
-
-                            <div class="menu-item">
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Pending Withdrawal</span>
                                 </a>
                             </div>
 
@@ -614,7 +560,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                             </span>
-                            <span class="menu-title">Wallet</span>
+                            <span class="menu-title">Transactions</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <div class="menu-sub menu-sub-accordion">
@@ -623,17 +569,10 @@
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Manage Wallet</span>
+                                    <span class="menu-title">View transactions</span>
                                 </a>
                             </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Add Wallet</span>
-                                </a>
-                            </div>
+    
 
 
                         </div>

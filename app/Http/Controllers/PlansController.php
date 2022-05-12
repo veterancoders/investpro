@@ -22,7 +22,7 @@ class PlansController extends Controller
         $plan = new Plan;
 
         $plan->name = request('plan_name');
-        $plan->due_date = request('due_date');
+        $plan->days = request('days');
         $plan->min = request('min_amount');
         $plan->max = request('max_amount');
         $plan->feature = request('feature');

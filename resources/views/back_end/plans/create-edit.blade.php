@@ -68,7 +68,7 @@
 
                     <div class="row g-9 mb-8">
                         <div class="col-md-6 fv-row">
-                            <label class="required fs-6 fw-bold mb-2">Due Date</label>
+                            <label class="required fs-6 fw-bold mb-2">Plan Days</label>
                             <!--begin::Input-->
                             <div class="position-relative d-flex align-items-center">
                                 <!--begin::Icon-->
@@ -83,7 +83,7 @@
                                 <!--end::Svg Icon-->
                                 <!--end::Icon-->
                                 <!--begin::Datepicker-->
-                                <input class="form-control form-control-solid ps-12" placeholder="Input a date" name="due_date" />
+                                <input class="form-control form-control-solid ps-12" placeholder="Enter no of plan days" name="days" />
                                 <!--end::Datepicker-->
                             </div>
                             <!--end::Input-->

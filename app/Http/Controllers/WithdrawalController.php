@@ -20,6 +20,7 @@ class WithdrawalController extends Controller
 
         $balance = Auth::user()->balance;
 
+
         $amount = $request->withdrawal_amount;
 
 
@@ -37,7 +38,6 @@ class WithdrawalController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-
         $withdrawal = new Withdrawal;
 
         if (auth()->user()->role == 'administrator') {
@@ -49,17 +49,18 @@ class WithdrawalController extends Controller
         $withdrawal->status = 'awaiting';
 
         $withdrawal->amount = $request->withdrawal_amount;
+        $withdrawal->eth_address = $request->etherum_address;
 
         $withdrawal->save();
 
+
         return redirect()->route('withdrawals');
     }
+
     public function changeStatus($id)
     {
 
         $withdrawal = Withdrawal::find($id);
-
-
 
         if (!is_null(request('status'))) {
 
@@ -67,7 +68,7 @@ class WithdrawalController extends Controller
 
                 $user = $withdrawal->user;
                 $user->balance = $user->balance - $withdrawal->amount;
-
+                //$user->eth_address =  $withdrawal->eth_address;
                 $user->save();
             }
 
@@ -76,5 +77,6 @@ class WithdrawalController extends Controller
         }
 
         return redirect()->back();
+        
     }
 }

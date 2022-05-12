@@ -70,4 +70,10 @@ class WebsiteController extends Controller
             return view('back_end.withdrawal.list', $withdrawals);
         }
     }
+
+    //settings
+    public function settings(){
+
+        return view('back_end.settings');
+    }
 }

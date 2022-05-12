@@ -6,5 +6,10 @@ use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
-    //
+
+
+    public function settings(Request $request)
+    {
+        dd($request->all());
+    }
 }

@@ -46,15 +46,16 @@
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2">
                             <span>User Balance :: </span><span style="font-size: 16px;color:red;"><strong>${{ auth()->user()->balance}}</strong></span>
                         </label>
-            
+
                     </div>
-                  
+
                     @if(auth()->user()->balance == '0')
                     <div class="text-center">
                         <p>Your user account balance is <span style="color: red;"><strong>empty!</strong></span><br>
-                        <a href="{{ route('viewadddeposits')}}">Click to add deposits</a></p>
+                            <a href="{{ route('viewadddeposits')}}">Click to add deposits</a>
+                        </p>
                     </div>
-                    
+
 
                     @else
                     <div class="row g-9 mb-8">
@@ -68,7 +69,22 @@
 
                         <!--end::Col-->
                     </div>
-                  
+
+                    <div class="row g-9 mb-8">
+                        <!--begin::Col-->
+                        <div class="col-md-12 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">Etherum address</label>
+                            @if(is_null(auth()->user()->eth_address))
+                            <input type="text" class="form-control form-control-solid" placeholder="Enter your etherum address" name="etherum_address" required />
+                            @else
+                            <input type="text" class="form-control form-control-solid"  name="etherum_address" value="{{ auth()->user()->eth_address}}"/>
+
+                            @endif
+                        </div>
+
+
+                        <!--end::Col-->
+                    </div>
                     <div class="text-center">
                         <button type="reset" id="kt_modal_new_target_cancel" class="btn btn-light me-3">Cancel</button>
                         <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary">
