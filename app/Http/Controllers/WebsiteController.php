@@ -76,4 +76,10 @@ class WebsiteController extends Controller
 
         return view('back_end.settings');
     }
+    //account_settings
+
+    public function account_settings(){
+
+        return view('back_end.account_settings');
+    }
 }
