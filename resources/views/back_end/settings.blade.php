@@ -162,27 +162,7 @@
                         </div>
                     </div>
 
-                    <!--begin::Row-->
-                    <div class="row">
-                        <!--begin::Col-->
-                        <div class="col-xl-3">
-                            <div class="fs-6 fw-bold mt-2 mb-3">Status</div>
-                        </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-xl-9">
-                            <div class="form-check form-switch form-check-custom form-check-solid">
-                                @if(setting('status') == 'on')
-                                <input class="form-check-input" type="checkbox" id="status" name="status" checked="checked" />
-                                @else
-                                <input class="form-check-input" type="checkbox" id="status" name="status"/>
-                                @endif
-                                <label class="form-check-label fw-bold text-gray-400 ms-3" for="status">Active</label>
-                            </div>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
+                
                 </div>
                 <!--end::Card body-->
                 <!--begin::Card footer-->

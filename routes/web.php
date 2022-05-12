@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AllController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PlansController;
 use App\Http\Controllers\SettingsController;
@@ -25,14 +26,7 @@ Route::get('/', function () {
     return view('front_end.index');
 });
 
-Route::get('/dashboard', function () {
-
-    //if (auth()->user()->role == 'administrator') {
-        return view('back_end.dashboard');
-    //} else {
-    //    return view('front_end.dashboard');
-    //}
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'] )->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 // Users ..........///////...
