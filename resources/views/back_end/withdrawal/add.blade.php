@@ -49,18 +49,26 @@
             
                     </div>
                   
+                    @if(auth()->user()->balance == '0')
+                    <div class="text-center">
+                        <p>Your user account balance is <span style="color: red;"><strong>empty!</strong></span><br>
+                        <a href="{{ route('viewadddeposits')}}">Click to add deposits</a></p>
+                    </div>
+                    
+
+                    @else
                     <div class="row g-9 mb-8">
                         <!--begin::Col-->
                         <div class="col-md-12 fv-row">
                             <label class="required fs-6 fw-bold mb-2">Withdrawal Amount</label>
-                            <input type="number" class="form-control form-control-solid" placeholder="Enter amount" name="withdrawal_amount" required />
+                            <input type="number" min="1" class="form-control form-control-solid" placeholder="Enter amount" name="withdrawal_amount" required />
 
                         </div>
 
 
                         <!--end::Col-->
                     </div>
-                   
+                  
                     <div class="text-center">
                         <button type="reset" id="kt_modal_new_target_cancel" class="btn btn-light me-3">Cancel</button>
                         <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary">
@@ -68,7 +76,7 @@
                             <span class="indicator-progress">Please wait...
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                         </button>
-                    </div>
+                    </div> @endif
                     <!--end::Actions-->
                 </form>
                 <!--end:Form-->
