@@ -9,12 +9,12 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $data = [
+        $page = [
             'pageTitle' => 'Dashboard',
             'pageDesc' => 'Dashboard',
         ];
 
-        $customers = User::take(5)->get();
+        $customers = User::take(5)->latest('created_at')->get();
 
         return view('back_end.dashboard', compact('customers', 'page'));
        
