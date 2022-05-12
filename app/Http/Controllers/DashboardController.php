@@ -9,7 +9,7 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $data = [
+        $page = [
             'pageTitle' => 'Dashboard',
             'pageDesc' => 'Dashboard',
         ];

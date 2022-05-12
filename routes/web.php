@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AllController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepositController;
@@ -78,4 +79,6 @@ Route::post('/settings', [SettingsController::class, 'settings'])->name('setting
 //Transaction History..../////..
 Route::get('/view-transactions', [WebsiteController::class, 'settings'])->name('view_settings')->middleware('auth');
 
-
+//Account Settings
+Route::get('/account_settings', [WebsiteController::class, 'account_settings'])->name('account_settings')->middleware('auth');
+Route::post('/update_account', [AccountController::class, 'update_account'])->name('update_account')->middleware('auth');
