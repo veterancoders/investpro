@@ -20,6 +20,9 @@
             <!--begin::Modal body-->
             <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
                 <!--begin:Form-->
+
+
+
                 <form id="kt_modal_new_target_form" class="form" action="{{ route('adddeposit')}}" method="POST" enctype="multipart/form-data">
 
                     @csrf
@@ -36,6 +39,7 @@
                         <!--end::Description-->
                     </div>
                     <!--end::Heading-->
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" style="color: red;" />
                     <!--begin::Input group-->
                     <div class="d-flex flex-column mb-8 fv-row">
                         <!--begin::Label-->
@@ -52,8 +56,7 @@
 
                         </select>
                     </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
+                    @if(auth()->user()->role == 'administrator')
                     <div class="d-flex flex-column mb-8 fv-row">
                         <!--begin::Label-->
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2">
@@ -70,13 +73,13 @@
                     </div>
                     <!--end::Input group-->
 
-
+                    @endif
                     <!--begin::Input group-->
                     <div class="row g-9 mb-8">
                         <!--begin::Col-->
                         <div class="col-md-12 fv-row">
                             <label class="required fs-6 fw-bold mb-2">Investment Amount</label>
-                            <input type="text" class="form-control form-control-solid" placeholder="Enter amount" name="amount" required />
+                            <input type="number" class="form-control form-control-solid" placeholder="Enter amount" name="amount" required />
 
                         </div>
 
@@ -94,45 +97,23 @@
 
                         <!--end::Col-->
                     </div>
-                    <div class="row g-9 mb-8">
-                        <div class="col-md-6 fv-row">
-                            <label class="required fs-6 fw-bold mb-2">Start Date</label>
-                            <!--begin::Input-->
-                            <div class="position-relative d-flex align-items-center">
-                              
-                                <input type="datetime-local" name="start_date" class="form-control" required />                                <!--end::Datepicker-->
-                            </div>
-                            <!--end::Input-->
-                        </div>
-                    </div>
 
-                    <div class="row g-9 mb-8">
-                        <div class="col-md-6 fv-row">
-                            <label class="required fs-6 fw-bold mb-2">Payout Date</label>
-                            <!--begin::Input-->
-                            <div class="position-relative d-flex align-items-center">
-                              
-                                <input type="datetime-local" name="payout_date" class="form-control" required />                                <!--end::Datepicker-->
-                            </div>
-                            <!--end::Input-->
-                        </div>
-                    </div>
-          
+
                     <div class="row g-9 mb-8">
                         <!--begin::Col-->
                         <div class="col-md-6 fv-row">
-                            <label class="required fs-6 fw-bold mb-2">Currency</label>
-                            <select class=" form-control form-control-solid mb-2" name="currency" data-control="select2" data-search="true" data-placeholder="Select currency">
-                            <option></option>
-                            <option value="USD">USD</option>
-                            <option value="NGN">NGN</option>
-                            <option value="EUR">EUR</option>
-                            <option value="PND">PND</option>
-                            <option value="YEN">YEN</option>
-                            <option value="CUD">CUD</option>
-                         
+                            <label class=" fs-6 fw-bold mb-2">Currency</label>
+                            <select class="required form-control form-control-solid mb-2" name="currency" data-control="select2" data-search="true" data-placeholder="Select currency">
+                                <option></option>
+                                <option value="USD">USD</option>
+                                <option value="NGN">NGN</option>
+                                <option value="EUR">EUR</option>
+                                <option value="PND">PND</option>
+                                <option value="YEN">YEN</option>
+                                <option value="CUD">CUD</option>
 
-                        </select>
+
+                            </select>
                         </div>
                     </div>
 

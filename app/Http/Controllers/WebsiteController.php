@@ -30,14 +30,35 @@ class WebsiteController extends Controller
     // deposits
     public function deposits()
     {
-        if (Auth::user()->role = 'administrator') {
 
+
+        if (Auth::user()->role == 'administrator') {
 
             $deposit = Investment::all();
 
             $deposits['deposits'] = $deposit;
 
             return view('back_end.deposits.lists', $deposits);
+        } 
+        
+        if (Auth::user()->role == 'user') {
+
+            $deposit = Investment::where('user_id', auth()->id())->get();
+
+            $deposits['deposits'] = $deposit;
+
+            return view('back_end.deposits.lists', $deposits);
+
         }
+    
+    }
+
+
+    //Withdrawal
+
+    public function withdrawals(){
+
+
+        return view('back_end.withdrawal.index');
     }
 }

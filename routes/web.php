@@ -24,11 +24,11 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
 
-    if (auth()->user()->role == 'administrator') {
+    //if (auth()->user()->role == 'administrator') {
         return view('back_end.dashboard');
-    } else {
-        return view('front_end.dashboard');
-    }
+    //} else {
+    //    return view('front_end.dashboard');
+    //}
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
@@ -37,7 +37,7 @@ require __DIR__ . '/auth.php';
 Route::get('index', [UserController::class, 'index'])->name('index')->middleware('auth');
 
 
-//plans..................///....(Admin Area)
+//plans..................///....
 //1. Pland List
 Route::get('/Manageplans', [WebsiteController::class, 'plans'])->name('manageplans')->middleware('auth');
 //2. Add Plans
@@ -47,7 +47,7 @@ Route::post('plansadd', [PlansController::class, 'create'])->name('plansadd')->m
 
 
 
-//Deposits...........///....(Admin Area)
+//Deposits...........///....
 // 1. Deposits List
 Route::get('/deposits', [WebsiteController::class, 'deposits'])->name('depositlists')->middleware('auth');
 
@@ -57,5 +57,9 @@ Route::post('/add_deposit', [DepositController::class, 'create'])->name('adddepo
 
 //3. Deposit Status
 Route::get('/change-deposit-status/{id}', [DepositController::class, 'changeStatus'])->name('changeDepositStatus')->middleware('auth');
-//Route::get('/unapprove_deposit/{id}', [DepositController::class, 'unapprove_deposit'])->name('unapprove_deposit')->middleware('auth');
-//Route::get('/awaiting_deposit_approval/{id}', [DepositController::class, 'awaiting_deposit_approval'])->name('awaiting_deposit_approval')->middleware('auth');
+
+
+
+//Withdrawals.......///....
+// 1. Withdrawal List
+Route::get('/withdrawals', [WebsiteController::class, 'withdrawals'])->name('withdrawals')->middleware('auth');

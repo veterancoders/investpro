@@ -58,61 +58,17 @@
                                     <div class="px-7 py-5" data-kt-subscription-table-filter="form">
                                         <!--begin::Input group-->
                                         <div class="mb-10">
-                                            <label class="form-label fs-6 fw-bold">Month:</label>
+                                            <label class="form-label fs-6 fw-bold">Status</label>
                                             <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-subscription-table-filter="month" data-hide-search="true">
                                                 <option></option>
-                                                <option value="jan">January</option>
-                                                <option value="feb">February</option>
-                                                <option value="mar">March</option>
-                                                <option value="apr">April</option>
-                                                <option value="may">May</option>
-                                                <option value="jun">June</option>
-                                                <option value="jul">July</option>
-                                                <option value="aug">August</option>
-                                                <option value="sep">September</option>
-                                                <option value="oct">October</option>
-                                                <option value="nov">November</option>
-                                                <option value="dec">December</option>
+                                                <option value="approved">Approved</option>
+                                                <option value="awaiting">Awaiting</option>
+                                                <option value="payedout">Payed-out</option>
+                                                <option value="unapprove">Unapproved</option>
+                                               
                                             </select>
                                         </div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        <div class="mb-10">
-                                            <label class="form-label fs-6 fw-bold">Status:</label>
-                                            <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-subscription-table-filter="status" data-hide-search="true">
-                                                <option></option>
-                                                <option value="Active">Active</option>
-                                                <option value="Expiring">Expiring</option>
-                                                <option value="Suspended">Suspended</option>
-                                            </select>
-                                        </div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        <div class="mb-10">
-                                            <label class="form-label fs-6 fw-bold">Billing Method:</label>
-                                            <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-subscription-table-filter="billing" data-hide-search="true">
-                                                <option></option>
-                                                <option value="Auto-debit">Auto-debit</option>
-                                                <option value="Manual - Credit Card">Manual - Credit Card</option>
-                                                <option value="Manual - Cash">Manual - Cash</option>
-                                                <option value="Manual - Paypal">Manual - Paypal</option>
-                                            </select>
-                                        </div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        <div class="mb-10">
-                                            <label class="form-label fs-6 fw-bold">Product:</label>
-                                            <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-subscription-table-filter="product" data-hide-search="true">
-                                                <option></option>
-                                                <option value="Basic">Basic</option>
-                                                <option value="Basic Bundle">Basic Bundle</option>
-                                                <option value="Teams">Teams</option>
-                                                <option value="Teams Bundle">Teams Bundle</option>
-                                                <option value="Enterprise">Enterprise</option>
-                                                <option value=" Enterprise Bundle">Enterprise Bundle</option>
-                                            </select>
-                                        </div>
-                                        <!--end::Input group-->
+                                      
                                         <!--begin::Actions-->
                                         <div class="d-flex justify-content-end">
                                             <button type="reset" class="btn btn-light btn-active-light-primary fw-bold me-2 px-6" data-kt-menu-dismiss="true" data-kt-subscription-table-filter="reset">Reset</button>
@@ -177,7 +133,9 @@
                                     <th class="min-w-125px">Status</th>
                                     <th class="min-w-125px">Plan name</th>
                                     <th class="min-w-125px">Currency</th>
+                                    @if(auth()->user()->role == 'administrator')
                                     <th class="min-w-125px">Status update</th>
+                                    @endif
                                     <th class="text-end min-w-70px">Actions</th>
                                 </tr>
                                 <!--end::Table row-->
@@ -190,23 +148,36 @@
 
                                     <!--begin::Customer=-->
                                     <td>
-                                        <a href=""><strong>{{$deposit->user_id}}</strong></a>
+                                        <a href=""><strong>{{$deposit->user->name}}</strong></a>
                                     </td>
 
                                     <td>{{ $deposit->amount}}
                                     </td>
                                     <!--end::Status=-->
                                     <!--begin::Billing=-->
-                                    <td>{{ $deposit->status}}
+
+                                    <td>
+                                        @if($deposit->status == 'awaiting')
+                                        <div class="badge badge-light-warning">{{ $deposit->status}}</div>
+                                        @elseif($deposit->status == 'approved')
+                                        <div class="badge badge-light-success">{{ $deposit->status}}</div>
+                                        @elseif($deposit->status == 'unapproved')
+                                        <div class="badge badge-light-danger">{{ $deposit->status}}</div>
+                                        @else
+                                        <div class="badge badge-light-primary">{{ $deposit->status}}</div>
+                                        @endif
+                                        
+
+
                                     </td>
                                     <!--end::Billing=-->
                                     <!--begin::Product=-->
-                                    <td>{{ $deposit->plan_id}}</td>
+                                    <td>{{ $deposit->plan->name}}</td>
                                     <!--end::Product=-->
                                     <!--begin::Date=-->
                                     <td>{{ $deposit->currency}}</td>
 
-
+                                    @if(auth()->user()->role == 'administrator')
                                     <td>
                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Status update
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
@@ -221,12 +192,12 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'approve' ] ) }}" class="menu-link px-3">Approve</a>
+                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'approved' ] ) }}" class="menu-link px-3">Approve</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'unapprove' ]) }}" class="menu-link px-3">Unapprove</a>
+                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'unapproved' ]) }}" class="menu-link px-3">Unapprove</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -234,8 +205,12 @@
                                                 <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'awaiting' ] ) }}" class="menu-link px-3">Awaiting</a>
                                             </div>
                                             <!--end::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'payedout' ] ) }}" class="menu-link px-3">Payout</a>
+                                            </div>
                                         </div>
                                     </td>
+                                    @endif
                                     <!--end::Date=-->
                                     <!--begin::Action=-->
                                     <td class="text-end">
@@ -260,10 +235,12 @@
                                                 <a href="../../demo1/dist/apps/subscriptions/add.html" class="menu-link px-3">Edit</a>
                                             </div>
                                             <!--end::Menu item-->
+                                            @if(auth()->user()->role == 'administrator')
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a href="#" data-kt-subscriptions-table-filter="delete_row" class="menu-link px-3">Delete</a>
                                             </div>
+                                            @endif
                                             <!--end::Menu item-->
                                         </div>
                                         <!--end::Menu-->
