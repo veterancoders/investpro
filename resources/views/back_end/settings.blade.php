@@ -28,9 +28,9 @@
                         <!--begin::Col-->
                         <div class="col-lg-8">
                             <!--begin::Image input-->
-                            <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/blank.svg')">
+                            <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{ asset('images/logo/' . setting('logo')) }}')">
                                 <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-125px h-125px bgi-position-center" style="background-size: 100%; background-image: url('assets/media/svg/brand-logos/volicity-9.svg')"></div>
+                                <div class="image-input-wrapper w-125px h-125px bgi-position-center" style="background-size: 100%; background-image: url('{{ asset('images/logo/' . setting('logo')) }}')"></div>
                                 <!--end::Preview existing avatar-->
                                 <!--begin::Label-->
                                 <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
@@ -69,7 +69,7 @@
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="site_name" />
+                            <input type="text" value="{{ setting('site_name') }}" class="form-control form-control-solid" name="site_name" />
                         </div>
                     </div>
                     <!--end::Row-->
@@ -82,7 +82,20 @@
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="site_contact" />
+                            <input type="text" class="form-control form-control-solid" value="{{ setting('site_contact') }}" name="site_contact" />
+                        </div>
+                    </div>
+                    <!--end::Row-->
+                    <!--begin::Row-->
+                    <div class="row mb-8">
+                        <!--begin::Col-->
+                        <div class="col-xl-3">
+                            <div class="fs-6 fw-bold mt-2 mb-3">Site Address</div>
+                        </div>
+                        <!--end::Col-->
+                        <!--begin::Col-->
+                        <div class="col-xl-9 fv-row">
+                            <input type="text" class="form-control form-control-solid" value="{{ setting('site_address') }}" name="site_address" />
                         </div>
                     </div>
                     <!--end::Row-->
@@ -95,7 +108,7 @@
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-xl-9 fv-row">
-                            <textarea name="site_description" class="form-control form-control-solid h-100px"> </textarea>
+                            <textarea name="site_description" class="form-control form-control-solid h-100px">{{ setting('site_description') }}</textarea>
 
                         </div>
                         <!--begin::Col-->
@@ -110,7 +123,7 @@
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-xl-9 fv-row">
-                            <input type="eth_address" class="form-control form-control-solid" name="type" />
+                            <input type="text" class="form-control form-control-solid" value="{{ setting('eth_address') }}" name="eth_address" />
                         </div>
                     </div>
                     <!--end::Row-->
@@ -130,7 +143,7 @@
                                 <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file"  name="eth_barcode" accept=".png, .jpg, .jpeg" />
+                                    <input type="file" name="eth_barcode" accept=".png, .jpg, .jpeg" />
                                     <input type="hidden" name="eth_barcode_remove" />
                                     <!--end::Inputs-->
                                 </label>
@@ -150,29 +163,6 @@
                     </div>
 
                     <!--begin::Row-->
-                    <div class="row mb-8">
-                        <!--begin::Col-->
-                        <div class="col-xl-3">
-                            <div class="fs-6 fw-bold mt-2 mb-3">Notifications</div>
-                        </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-xl-9">
-                            <div class="d-flex fw-bold h-100">
-                                <div class="form-check form-check-custom form-check-solid me-9">
-                                    <input class="form-check-input" type="checkbox" value="" id="email" />
-                                    <label class="form-check-label ms-3" for="email">Email</label>
-                                </div>
-                                <div class="form-check form-check-custom form-check-solid">
-                                    <input class="form-check-input" type="checkbox" value="" id="phone" checked="checked" />
-                                    <label class="form-check-label ms-3" for="phone">Phone</label>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
-                    <!--begin::Row-->
                     <div class="row">
                         <!--begin::Col-->
                         <div class="col-xl-3">
@@ -182,7 +172,11 @@
                         <!--begin::Col-->
                         <div class="col-xl-9">
                             <div class="form-check form-switch form-check-custom form-check-solid">
-                                <input class="form-check-input" type="checkbox" value="" id="status" name="status" checked="checked" />
+                                @if(setting('status') == 'on')
+                                <input class="form-check-input" type="checkbox" id="status" name="status" checked="checked" />
+                                @else
+                                <input class="form-check-input" type="checkbox" id="status" name="status"/>
+                                @endif
                                 <label class="form-check-label fw-bold text-gray-400 ms-3" for="status">Active</label>
                             </div>
                         </div>

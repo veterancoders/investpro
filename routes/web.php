@@ -81,4 +81,7 @@ Route::get('/view-settings', [WebsiteController::class, 'settings'])->name('view
 Route::post('/settings', [SettingsController::class, 'settings'])->name('settings')->middleware('auth');
 
 
+//Transaction History..../////..
+Route::get('/view-transactions', [WebsiteController::class, 'settings'])->name('view_settings')->middleware('auth');
+
 
