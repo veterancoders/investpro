@@ -373,7 +373,7 @@
                                 </a>
                             </div>
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link" href="{{ route('add_withdrawal_page')}}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -534,7 +534,7 @@
                                 </a>
                             </div>
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link" href="{{ route('add_withdrawal_page')}}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>

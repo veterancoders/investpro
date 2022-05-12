@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Investment;
 use App\Models\Plan;
+use App\Models\Withdrawal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,8 +40,8 @@ class WebsiteController extends Controller
             $deposits['deposits'] = $deposit;
 
             return view('back_end.deposits.lists', $deposits);
-        } 
-        
+        }
+
         if (Auth::user()->role == 'user') {
 
             $deposit = Investment::where('user_id', auth()->id())->get();
@@ -48,17 +49,25 @@ class WebsiteController extends Controller
             $deposits['deposits'] = $deposit;
 
             return view('back_end.deposits.lists', $deposits);
-
         }
-    
     }
 
 
     //Withdrawal
 
-    public function withdrawals(){
+    public function withdrawals()
+    {
 
+        if (Auth::user()->role == 'administrator') {
+           
+            $withdrawal = Withdrawal::all();
+            $withdrawals['withdrawal'] = $withdrawal;
+            return view('back_end.withdrawal.list', $withdrawals); 
+        } else {
 
-        return view('back_end.withdrawal.index');
+            $withdrawal = Withdrawal::where('user_id', auth()->id())->get();
+            $withdrawals['withdrawal'] = $withdrawal;
+            return view('back_end.withdrawal.list', $withdrawals);
+        }
     }
 }

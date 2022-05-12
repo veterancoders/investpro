@@ -5,6 +5,8 @@ use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PlansController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\WithdrawalController;
+use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,3 +65,10 @@ Route::get('/change-deposit-status/{id}', [DepositController::class, 'changeStat
 //Withdrawals.......///....
 // 1. Withdrawal List
 Route::get('/withdrawals', [WebsiteController::class, 'withdrawals'])->name('withdrawals')->middleware('auth');
+
+//2. Add withdrawal
+Route::get('/add-withdrawal', [WithdrawalController::class, 'index'])->name('add_withdrawal_page')->middleware('auth');
+Route::post('/withdraw', [WithdrawalController::class, 'create'])->name('add_withdrawal')->middleware('auth');
+
+//3. Withdrawal Status
+Route::get('/change-withdrawal-status/{id}', [WithdrawalController::class, 'changeStatus'])->name('changewithdrawalStatus')->middleware('auth');
