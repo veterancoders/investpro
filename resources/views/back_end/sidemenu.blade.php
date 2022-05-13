@@ -98,14 +98,7 @@
                                             <span class="menu-title">Users List</span>
                                         </a>
                                     </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/user-management/users/view.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">View User</span>
-                                        </a>
-                                    </div>
+                                   
                                 </div>
                             </div>
                             
@@ -167,7 +160,7 @@
                         </span>
                         <div class="menu-sub menu-sub-accordion">
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link" href="{{ route('transactions')}}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>

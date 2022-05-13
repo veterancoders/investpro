@@ -15,17 +15,19 @@
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Keenthemes | Metronic" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
-    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/jquery.countdown.css') }}" rel="stylesheet" type="text/css" />
+
     <!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
@@ -236,7 +238,7 @@
                                 <!--end::Title-->
                             </div>
                             <!--end::Page title-->
-                           
+
                         </div>
                         <!--end::Container-->
                     </div>
@@ -294,32 +296,37 @@
     <script>
         var hostUrl = "assets/";
     </script>
+
     <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
+    <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
-    <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-    <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
+    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->
+    <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
 
-    <script src="assets/js/custom/account/settings/signin-methods.js"></script>
-    <script src="assets/js/custom/account/settings/profile-details.js"></script>
-    <script src="assets/js/custom/account/settings/deactivate-account.js"></script>
-    <script src="assets/js/custom/utilities/modals/two-factor-authentication.js"></script>
-    <script src="assets/js/custom/apps/user-management/users/list/table.js"></script>
-    <script src="assets/js/custom/apps/user-management/users/list/export-users.js"></script>
-    <script src="assets/js/custom/apps/user-management/users/list/add.js"></script>
-	<script src="assets/js/custom/apps/subscriptions/list/export.js"></script>
-		<script src="assets/js/custom/apps/subscriptions/list/list.js"></script>
-    <script src="assets/js/widgets.bundle.js"></script>
-    <script src="assets/js/custom/widgets.js"></script>
-    <script src="assets/js/custom/utilities/modals/new-target.js"></script>
-    <script src="assets/js/custom/apps/chat/chat.js"></script>
-    <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-    <script src="assets/js/custom/utilities/modals/create-app.js"></script>
-    <script src="assets/js/custom/utilities/modals/users-search.js"></script>
 
+
+    <script src="{{ asset('assets/js/custom/account/settings/signin-methods.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/account/settings/profile-details.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/account/settings/deactivate-account.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/apps/user-management/users/list/table.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/apps/user-management/users/list/export-users.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/apps/user-management/users/list/add.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/apps/subscriptions/list/export.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/apps/subscriptions/list/list.js') }}"></script>
+    <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/utilities/modals/new-target.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
+    
+    @yield('countdown')
 
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->

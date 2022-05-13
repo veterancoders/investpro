@@ -15,6 +15,8 @@ class SettingsController extends Controller
             $file  = $request->file('logo');
             $logo = $file->getClientOriginalName();
             $file->move('images/logo', $logo);
+
+            setting(["logo" => $logo])->save();
         }
 
 
@@ -22,6 +24,9 @@ class SettingsController extends Controller
             $file  = $request->file('eth_barcode');
             $eth_barcode = $file->getClientOriginalName();
             $file->move('images/logo', $eth_barcode);
+
+            setting(["eth_barcode" => $eth_barcode])->save();
+
         }
 
 
@@ -35,12 +40,6 @@ class SettingsController extends Controller
         setting(["site_address" => request('site_address')])->save();
 
         setting(["eth_address" => request('eth_address')])->save();
-
-
-        setting(["status" => request('status')])->save();
-
-        setting(["logo" => md5($logo)])->save();
-        setting(["eth_barcode" => md5($eth_barcode)])->save();
 
 
         return redirect()->back();

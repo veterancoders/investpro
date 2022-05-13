@@ -58,17 +58,24 @@
                                     <div class="px-7 py-5" data-kt-subscription-table-filter="form">
                                         <!--begin::Input group-->
                                         <div class="mb-10">
-                                            <label class="form-label fs-6 fw-bold">Status</label>
+                                            <label class="form-label fs-6 fw-bold">Month:</label>
                                             <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-subscription-table-filter="month" data-hide-search="true">
                                                 <option></option>
-                                                <option value="approved">Approved</option>
-                                                <option value="awaiting">Awaiting</option>
-                                                <option value="payedout">Payed-out</option>
-                                                <option value="unapprove">Unapproved</option>
-                                               
+                                                <option value="jan">January</option>
+                                                <option value="feb">February</option>
+                                                <option value="mar">March</option>
+                                                <option value="apr">April</option>
+                                                <option value="may">May</option>
+                                                <option value="jun">June</option>
+                                                <option value="jul">July</option>
+                                                <option value="aug">August</option>
+                                                <option value="sep">September</option>
+                                                <option value="oct">October</option>
+                                                <option value="nov">November</option>
+                                                <option value="dec">December</option>
                                             </select>
                                         </div>
-                                      
+
                                         <!--begin::Actions-->
                                         <div class="d-flex justify-content-end">
                                             <button type="reset" class="btn btn-light btn-active-light-primary fw-bold me-2 px-6" data-kt-menu-dismiss="true" data-kt-subscription-table-filter="reset">Reset</button>
@@ -92,19 +99,7 @@
                                     </span>
                                     <!--end::Svg Icon-->Export
                                 </button>
-                                <!--end::Export-->
-                                <!--begin::Add subscription-->
-                                <a href="{{ route('viewadddeposits')}}" class="btn btn-primary">
-                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-                                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->Add Deposit
-                                </a>
-                                <!--end::Add subscription-->
+
                             </div>
                             <!--end::Toolbar-->
                             <!--begin::Group actions-->
@@ -128,14 +123,10 @@
                                 <!--begin::Table row-->
                                 <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
 
-                                    <th class="min-w-125px">User name</th>
+                                    <th class="min-w-125px">User Name</th>
                                     <th class="min-w-125px">Amount</th>
-                                    <th class="min-w-125px">Status</th>
-                                    <th class="min-w-125px">Plan name</th>
-                                    <th class="min-w-125px">Payment prove</th>
-                                    @if(auth()->user()->role == 'administrator')
-                                    <th class="min-w-125px">Status update</th>
-                                    @endif
+                                    <th class="min-w-125px">Transaction type</th>
+                                    <th class="min-w-125px">Created_at</th>
                                     <th class="text-end min-w-70px">Actions</th>
                                 </tr>
                                 <!--end::Table row-->
@@ -143,76 +134,26 @@
                             <!--end::Table head-->
                             <!--begin::Table body-->
                             <tbody class="text-gray-600 fw-bold">
-                                @foreach($deposits as $deposit)
+                                @foreach($transactions as $data)
                                 <tr>
 
                                     <!--begin::Customer=-->
                                     <td>
-                                        <a href=""><strong>{{$deposit->user->name}}</strong></a>
+                                        <a href=""><strong>{{ $data->user->name }}</strong></a>
                                     </td>
-
-                                    <td>{{ $deposit->amount}}
+                                    <!--end::Customer=-->
+                                    <!--begin::Status=-->
+                                    <td>
+                                        {{ $data->amount }}
                                     </td>
                                     <!--end::Status=-->
                                     <!--begin::Billing=-->
-
                                     <td>
-                                        @if($deposit->status == 'awaiting')
-                                        <div class="badge badge-light-warning">{{ $deposit->status}}</div>
-                                        @elseif($deposit->status == 'approved')
-                                        <div class="badge badge-light-success">{{ $deposit->status}}</div>
-                                        @elseif($deposit->status == 'unapproved')
-                                        <div class="badge badge-light-danger">{{ $deposit->status}}</div>
-                                        @else
-                                        <div class="badge badge-light-primary">{{ $deposit->status}}</div>
-                                        @endif
-                                        
-
-
+                                        {{ $data->transaction_type }}
                                     </td>
-                                    <!--end::Billing=-->
-                                    <!--begin::Product=-->
-                                    <td>{{ $deposit->plan->name}}</td>
-                                    <!--end::Product=-->
-                                    <!--begin::Date=-->
-                                    <td>{{ $deposit->payment_prove}}</td>
-
-                                    @if(auth()->user()->role == 'administrator')
                                     <td>
-                                        <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Status update
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                            <span class="svg-icon svg-icon-5 m-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                    <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </a>
-                                        <!--begin::Menu-->
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'approved' ] ) }}" class="menu-link px-3">Approve</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'unapproved' ]) }}" class="menu-link px-3">Unapprove</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'awaiting' ] ) }}" class="menu-link px-3">Awaiting</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('changeDepositStatus', [ $deposit->id, 'status' => 'payedout' ] ) }}" class="menu-link px-3">Payout</a>
-                                            </div>
-                                        </div>
+                                        {{ $data->created_at }}
                                     </td>
-                                    @endif
-                                    <!--end::Date=-->
-                                    <!--begin::Action=-->
                                     <td class="text-end">
                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
@@ -227,25 +168,12 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('veiwdeposit', $deposit->id)}}" class="menu-link px-3">View</a>
+                                                <a href="{{ route('delete_transaction', $data->id)}}" class="menu-link px-3">Delete</a>
                                             </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="../../demo1/dist/apps/subscriptions/add.html" class="menu-link px-3">Edit</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            @if(auth()->user()->role == 'administrator')
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" data-kt-subscriptions-table-filter="delete_row" class="menu-link px-3">Delete</a>
-                                            </div>
-                                            @endif
-                                            <!--end::Menu item-->
                                         </div>
-                                        <!--end::Menu-->
                                     </td>
-                                    <!--end::Action=-->
+
+
                                 </tr>
                                 @endforeach
                             </tbody>

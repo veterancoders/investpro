@@ -33,29 +33,38 @@ require __DIR__ . '/auth.php';
 // Users ..........///////...
 //User Management
 Route::get('index', [UserController::class, 'index'])->name('index')->middleware('auth');
-
+Route::get('/view_user/{id}', [UserController::class, 'view'])->name('view_user')->middleware('auth');
 
 //plans..................///....
 //1. Pland List
 Route::get('/Manageplans', [WebsiteController::class, 'plans'])->name('manageplans')->middleware('auth');
+Route::get('/viewplan/{id}', [WebsiteController::class, 'viewplan'])->name('viewplan')->middleware('auth');
 //2. Add Plans
 
 Route::get('/addplans', [PlansController::class, 'index'])->name('addplans')->middleware('auth');
 Route::post('plansadd', [PlansController::class, 'create'])->name('plansadd')->middleware('auth');
-
+//3. Edit plan
+Route::get('/editplan/{id}', [PlansController::class, 'edit'])->name('editplan')->middleware('auth');
+Route::post('/updateplan/{id}', [PlansController::class, 'update'])->name('updateplan')->middleware('auth');
+//4. Delete plan
+Route::get('/deleteplan/{id}', [PlansController::class, 'delete'])->name('deleteplan')->middleware('auth');
 
 
 //Deposits...........///....
 // 1. Deposits List
 Route::get('/deposits', [WebsiteController::class, 'deposits'])->name('depositlists')->middleware('auth');
 
+
 //2. Add Deposits
 Route::get('/add-deposits', [DepositController::class, 'index'])->name('viewadddeposits')->middleware('auth');
 Route::post('/add_deposit', [DepositController::class, 'create'])->name('adddeposit')->middleware('auth');
+Route::get('/deposits-payment-details/{id}', [DepositController::class, 'paymentDetails'])->name('paymentDetails')->middleware('auth');
+Route::post('/payment_prove/{id}', [DepositController::class, 'payment_prove'])->name('payment_prove')->middleware('auth');
 
 //3. Deposit Status
 Route::get('/change-deposit-status/{id}', [DepositController::class, 'changeStatus'])->name('changeDepositStatus')->middleware('auth');
-
+//4. view deposits
+Route::get('/veiwdeposit/{id}', [DepositController::class, 'veiwdeposit'])->name('veiwdeposit')->middleware('auth');
 
 
 //Withdrawals.......///....
@@ -77,8 +86,11 @@ Route::post('/settings', [SettingsController::class, 'settings'])->name('setting
 
 
 //Transaction History..../////..
-Route::get('/view-transactions', [WebsiteController::class, 'settings'])->name('view_settings')->middleware('auth');
+Route::get('/tansactions', [WebsiteController::class, 'transactions'])->name('transactions')->middleware('auth');
+Route::get('/delete_transaction/{id}', [WebsiteController::class, 'delete_transaction'])->name('delete_transaction')->middleware('auth');
 
-//Account Settings
+//Account Settings...../////....
 Route::get('/account_settings', [WebsiteController::class, 'account_settings'])->name('account_settings')->middleware('auth');
 Route::post('/update_account', [AccountController::class, 'update_account'])->name('update_account')->middleware('auth');
+//change-email
+Route::post('/update-email', [AccountController::class, 'update_email'])->name('update_email')->middleware('auth');

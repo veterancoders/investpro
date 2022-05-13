@@ -13,7 +13,7 @@
                     <!--begin: Pic-->
                     <div class="me-7 mb-4">
                         <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                            <img src="assets/media/avatars/300-1.jpg" alt="image" />
+                            <img src="{{ auth()->user()->avatar}}" />
                             <div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{auth()->user()->avatar}}')">
                                     <!--begin::Preview existing avatar-->
-                                    <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{auth()->user()->avatar}}')"></div>
+                                    <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{ asset('images/' . auth()->user()->avatar) }}')"></div>
                                     <!--end::Preview existing avatar-->
                                     <!--begin::Label-->
                                     <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
@@ -594,7 +594,9 @@
                         <!--begin::Edit-->
                         <div id="kt_signin_email_edit" class="flex-row-fluid d-none">
                             <!--begin::Form-->
-                            <form id="kt_signin_change_email" class="form" novalidate="novalidate">
+                            <form class="form" novalidate="novalidate" method="POST" action="{{ route('update_email')}}">
+                                @csrf
+
                                 <div class="row mb-6">
                                     <div class="col-lg-6 mb-4 mb-lg-0">
                                         <div class="fv-row mb-0">
@@ -605,12 +607,12 @@
                                     <div class="col-lg-6">
                                         <div class="fv-row mb-0">
                                             <label for="confirmemailpassword" class="form-label fs-6 fw-bolder mb-3">Confirm Password</label>
-                                            <input type="password" class="form-control form-control-lg form-control-solid" name="confirmemailpassword" id="confirmemailpassword" />
+                                            <input type="password" class="form-control form-control-lg form-control-solid" name="confirmemailpassword" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-flex">
-                                    <button id="kt_signin_submit" type="button" class="btn btn-primary me-2 px-6">Update Email</button>
+                                    <button id="kt_signin_submit" type="submit" class="btn btn-primary me-2 px-6">Update Email</button>
                                     <button id="kt_signin_cancel" type="button" class="btn btn-color-gray-400 btn-active-light-primary px-6">Cancel</button>
                                 </div>
                             </form>

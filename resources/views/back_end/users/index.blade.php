@@ -4,10 +4,10 @@
 
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
-    <!--begin::Container-->
-    <div id="kt_content_container" class="container-xxl">
-		 <!--begin::Toolbar-->
-		 <div class="toolbar" id="kt_toolbar">
+	<!--begin::Container-->
+	<div id="kt_content_container" class="container-xxl">
+		<!--begin::Toolbar-->
+		<div class="toolbar" id="kt_toolbar">
 			<!--begin::Container-->
 			<div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
 				<!--begin::Page title-->
@@ -24,7 +24,7 @@
 					<!--end::Title-->
 				</div>
 				<!--end::Page title-->
-			   
+
 			</div>
 			<!--end::Container-->
 		</div>
@@ -456,7 +456,6 @@
 									<th class="min-w-125px">User</th>
 									<th class="min-w-125px">Role</th>
 									<th class="min-w-125px">Last login</th>
-									<th class="min-w-125px">Two-step</th>
 									<th class="min-w-125px">Joined Date</th>
 									<th class="text-end min-w-100px">Actions</th>
 								</tr>
@@ -465,7 +464,7 @@
 							<!--end::Table head-->
 							<!--begin::Table body-->
 							<tbody class="text-gray-600 fw-bold">
-								<!--begin::Table row-->
+								@foreach($users as $user)
 								<tr>
 									<!--begin::Checkbox-->
 									<td>
@@ -480,32 +479,30 @@
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 											<a href="../../demo1/dist/apps/user-management/users/view.html">
 												<div class="symbol-label">
-													<img src="assets/media/avatars/300-6.jpg" alt="Emma Smith" class="w-100" />
+													<img src="{{ $user->avatar}}"  class="w-100" />
 												</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<!--begin::User details-->
 										<div class="d-flex flex-column">
-											<a href="../../demo1/dist/apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
-											<span>smith@kpmg.com</span>
+											<a href="../../demo1/dist/apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1">{{ $user->name}}</a>
+											<span>{{ $user->email}}</span>
 										</div>
 										<!--begin::User details-->
 									</td>
 									<!--end::User=-->
 									<!--begin::Role=-->
-									<td>Administrator</td>
+									<td>{{$user->role}}</td>
 									<!--end::Role=-->
 									<!--begin::Last login=-->
 									<td>
 										<div class="badge badge-light fw-bolder">Yesterday</div>
 									</td>
 									<!--end::Last login=-->
-									<!--begin::Two step=-->
-									<td></td>
-									<!--end::Two step=-->
+								
 									<!--begin::Joined-->
-									<td>05 May 2022, 11:05 am</td>
+									<td>{{ $user->created_at->format('d M Y') }}</td>
 									<!--begin::Joined-->
 									<!--begin::Action=-->
 									<td class="text-end">
@@ -520,7 +517,9 @@
 										</a>
 										<!--begin::Menu-->
 										<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-											<!--begin::Menu item-->
+										<div class="menu-item px-3">
+												<a href="{{ route('view_user', $user->id)}}" class="menu-link px-3">View</a>
+											</div>
 											<div class="menu-item px-3">
 												<a href="../../demo1/dist/apps/user-management/users/view.html" class="menu-link px-3">Edit</a>
 											</div>
@@ -535,6 +534,7 @@
 									</td>
 									<!--end::Action=-->
 								</tr>
+								@endforeach
 							</tbody>
 							<!--end::Table body-->
 						</table>

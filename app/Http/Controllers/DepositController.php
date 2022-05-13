@@ -28,13 +28,6 @@ class DepositController extends Controller
     public function create(Request $request)
     {
 
-        //dd($request->all());
-
-        if ($request->hasFile('payment_prove')) {
-            $file  = $request->file('payment_prove');
-            $payment_prove = $file->getClientOriginalName();
-            $file->move('images', $payment_prove);
-        }
 
         $plan = Plan::find(request('plan_id'));
 
@@ -51,7 +44,7 @@ class DepositController extends Controller
 
         $validator->after(function ($validator) use ($amount, $plan) {
             if (($amount < $plan->min) || ($amount > $plan->max)) {
-                $validator->errors()->add('amount', 'The amount must be between ' . $plan->min . ' and ' . $plan->max . ' characters');
+                $validator->errors()->add('amount', 'The amount must be between ' . $plan->min . ' and ' . $plan->max);
             }
         });
 
@@ -62,30 +55,56 @@ class DepositController extends Controller
 
         $deposit = new Investment();
 
-        if (auth()->user()->role == 'administrator') {
+        if (isAdmin()) {
             $deposit->user_id = request('user_id');
         } else {
             $deposit->user_id = auth()->id();
         }
 
         $deposit->amount = request('amount');
+        $deposit->payment_prove = request('payment_prove');
         $deposit->plan_id = request('plan_id');
         $deposit->status = 'awaiting';
-        $deposit->payment_prove = md5($payment_prove);
-       
-        $deposit->currency = request('currency');
+
         $deposit->save();
 
-            /* if()
-        $wallet = new Wallet;
-
-        $wallet->user_id =  request('user_id');
-        $wallet->amount = request('amount');
-
-        $wallet->save() */;
+        if (isCUstomer()) {
+            return redirect()->route('paymentDetails', $deposit->id);
+        }
 
         return redirect()->route('depositlists');
     }
+
+    public function paymentDetails($id)
+    {
+
+        $investment = Investment::find($id);
+
+        return view('back_end.deposits.payment-details', compact('investment'));
+    }
+    public function payment_prove(Request $request, $id)
+    {
+
+        $investment = Investment::find($id);
+
+        $payment = '';
+
+        if ($request->hasFile('pay_prove')) {
+            $file  = $request->file('pay_prove');
+            $payment = $file->getClientOriginalName();
+            $file->move('images/payment_prove', $payment);
+        }
+
+        //d($payment);
+
+
+        $investment->payment_prove = $payment;
+        $investment->save();
+
+        return redirect()->route('depositlists');
+    }
+
+
 
     public function changeStatus($id)
     {
@@ -94,7 +113,7 @@ class DepositController extends Controller
 
         if (!is_null(request('status'))) {
 
-            if(request('status') == 'approved'){
+            if (request('status') == 'approved') {
 
                 $profit_percentage = $deposit->plan->profit_percentage;
                 $invested_amount = $deposit->amount;
@@ -107,7 +126,7 @@ class DepositController extends Controller
                 $deposit->payout_date = Carbon::now()->addDays($deposit->plan->days);
             }
 
-            if(request('status') == 'payedout'){
+            if (request('status') == 'payedout') {
 
                 $user = $deposit->user;
 
@@ -132,25 +151,20 @@ class DepositController extends Controller
         return redirect()->back();
     }
 
-    /* public function unapprove_deposit($id)
+    public function veiwdeposit($id)
     {
 
-        $status = Investment::find($id);
+        $investments = Investment::find($id);
 
-        $status->status = 'unapproved';
-        $status->save();
+        $investment['investment'] = $investments;
 
-        return redirect()->back();
+        $date = Carbon::parse($investments->payout_date);
+
+        $investment['countdown'] = $date->month . '/' . $date->day . '/' . $date->year . ' ' . $date->hour . ':' .  $date->minute . ':' . $date->second;
+
+//dd($investment);
+
+
+        return view('back_end.deposits.view', $investment);
     }
-
-    public function awaiting_deposit_approval($id)
-    {
-
-        $status = Investment::find($id);
-
-        $status->status = 'awaiting';
-        $status->save();
-
-        return redirect()->back();
-    } */
 }
