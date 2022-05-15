@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from template.viserlab.com/viserhyip/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 11:34:32 GMT -->
 
 <head>
     <meta charset="UTF-8" />
@@ -11,8 +10,8 @@
     <!-- favicon -->
     <link rel="icon" href="assets/img/favicon.png" sizes="16x16" type="image/png" />
     <!-- Stylesheet Link -->
-    <link rel="stylesheet" href="assets/css/style.css"/>
-<!--     <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!--     <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
 </head>
 
 <body class="t-bg-secondary">
@@ -38,8 +37,9 @@
                 <div class="row g-3 align-items-center">
                     <div class="col-6 col-lg-3">
                         <!-- Logo  -->
-                        <a href="index.html" class="vh-logo">
-                            <img src="assets/img/logo.png" alt="viserhyip" class="img-fluid vh-logo__is" />
+                        <a href="{{ route('home') }}" class="vh-logo">
+                            <img src="{{ asset('assets/img/logo.png') }}" alt="viserhyip"
+                                class="img-fluid vh-logo__is" />
                         </a>
                         <!-- Logo End -->
                     </div>
@@ -56,115 +56,29 @@
                             <!-- Navigation  -->
                             <nav class="vh-nav">
                                 <!-- Primary Menu  -->
-                                <ul class="list vh-primary-menu">
-                                    <li class="vh-primary-menu__list has-sub">
-                                        <a href="#" class="vh-primary-menu__link text-capitalize">
-                                            home
-                                        </a>
-                                        <ul class="vh-primary-menu__sub">
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="index.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">home 1</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="home-2.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">home 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="vh-primary-menu__list">
-                                        <a href="about.html" class="vh-primary-menu__link text-capitalize">about</a>
-                                    </li>
-                                    <li class="vh-primary-menu__list">
-                                        <a href="pricing.html" class="vh-primary-menu__link text-capitalize">plan</a>
-                                    </li>
-                                    <li class="vh-primary-menu__list has-sub">
-                                        <a href="#" class="vh-primary-menu__link text-capitalize">pages</a>
-                                        <ul class="vh-primary-menu__sub">
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="dashboard.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">dashboard</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="blog-post.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">blog post</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="blog-details.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">blog details</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="create-account.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">create account</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="sign-in.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">sign in</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="privacy-policy.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">privacy policy</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="investor.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">investor</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="faq.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">FAQ</a>
-                                            </li>
-                                            <li class="vh-primary-menu__sub-list">
-                                                <a href="error.html" class="
-                              t-link
-                              vh-primary-menu__sub-link
-                              text-capitalize
-                            ">404</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="vh-primary-menu__list">
-                                        <a href="blog.html" class="vh-primary-menu__link text-capitalize">blog</a>
-                                    </li>
-                                    <li class="vh-primary-menu__list">
-                                        <a href="contact.html" class="vh-primary-menu__link text-capitalize">contact</a>
-                                    </li>
-                                </ul>
-                                <!-- Primary Menu End -->
+
+                                <li class="vh-primary-menu__list">
+                                    <a href="{{ route('home') }}"
+                                        class="vh-primary-menu__link text-capitalize">Home</a>
+                                </li>
+                                <li class="vh-primary-menu__list">
+                                    <a href="{{ route('about') }}"
+                                        class="vh-primary-menu__link text-capitalize">About</a>
+                                </li>
+                                <li class="vh-primary-menu__list">
+                                    <a href="{{ route('faq') }}" class="vh-primary-menu__link text-capitalize">Faq</a>
+                                </li>
+                                <li class="vh-primary-menu__list">
+                                    <a href="{{ route('contact') }}"
+                                        class="vh-primary-menu__link text-capitalize">Contact</a>
+                                </li>
+
                                 <!-- User Login  -->
                                 <div class="mx-3">
                                     <ul class="list vh-primary-menu vh-primary-menu--alt">
                                         <li class="vh-primary-menu__list text-center">
-                                            <a href="{{ route('register')}}" class="
+                                            <a href="{{ route('register') }}"
+                                                class="
                             btn
                             button-outline
                             button-outline--exception
@@ -176,7 +90,8 @@
                                             </a>
                                         </li>
                                         <li class="vh-primary-menu__list text-center">
-                                            <a href="{{ route('login')}}" class="
+                                            <a href="{{ route('login') }}"
+                                                class="
                             btn
                             button-solid
                             btn-grad btn-grad--orange
@@ -198,12 +113,12 @@
             </div>
         </header>
         @yield('content')
-        
+
         <div class="back-to-top">
-      <span class="back-top">
-        <i class='bx bxs-chevron-up'></i>
-      </span>
-    </div>
+            <span class="back-top">
+                <i class='bx bxs-chevron-up'></i>
+            </span>
+        </div>
         <!-- Footer  -->
         <footer class="vh-footer-primary">
             <div class="vh-footer-primary__container t-pt-100">
@@ -213,14 +128,16 @@
                             <div class="text-center">
                                 <!-- Logo  -->
                                 <a href="index.html" class="t-link vh-footer-logo">
-                                    <img src="assets/img/footer-logo.png" alt="viserhyip" class="img-fluid vh-footer-logo__is" />
+                                    <img src="assets/img/footer-logo.png" alt="viserhyip"
+                                        class="img-fluid vh-footer-logo__is" />
                                 </a>
                                 <!-- Logo End -->
                             </div>
                             <div class="t-mt-30">
                                 <ul class="list list--row justify-content-center">
                                     <li class="list--row__item">
-                                        <a href="#" class="
+                                        <a href="#"
+                                            class="
                         t-link
                         vh-social-icon vh-social-icon--lg vh-social-icon--fb
                       ">
@@ -228,7 +145,8 @@
                                         </a>
                                     </li>
                                     <li class="list--row__item">
-                                        <a href="#" class="
+                                        <a href="#"
+                                            class="
                         t-link
                         vh-social-icon
                         vh-social-icon--lg
@@ -238,7 +156,8 @@
                                         </a>
                                     </li>
                                     <li class="list--row__item">
-                                        <a href="#" class="
+                                        <a href="#"
+                                            class="
                         t-link
                         vh-social-icon vh-social-icon--lg vh-social-icon--tw
                       ">
@@ -246,7 +165,8 @@
                                         </a>
                                     </li>
                                     <li class="list--row__item">
-                                        <a href="#" class="
+                                        <a href="#"
+                                            class="
                         t-link
                         vh-social-icon vh-social-icon--lg vh-social-icon--pin
                       ">
@@ -274,7 +194,8 @@
                             <div class="col-lg-8">
                                 <div class="row g-3">
                                     <div class="col-md-4">
-                                        <h3 class="
+                                        <h3
+                                            class="
                         text-capitalize
                         t-text-white
                         vh-footer-primary__title
@@ -283,7 +204,8 @@
                                         </h3>
                                         <ul class="list list--column vh-footer-list">
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="pricing.html" class="
+                                                <a href="pricing.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -293,7 +215,8 @@
                                                 </a>
                                             </li>
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="privacy-policy.html" class="
+                                                <a href="privacy-policy.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -303,7 +226,8 @@
                                                 </a>
                                             </li>
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="dashboard.html" class="
+                                                <a href="dashboard.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -313,7 +237,8 @@
                                                 </a>
                                             </li>
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="sign-in.html" class="
+                                                <a href="sign-in.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -323,7 +248,8 @@
                                                 </a>
                                             </li>
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="faq.html" class="
+                                                <a href="faq.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -335,7 +261,8 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-4">
-                                        <h3 class="
+                                        <h3
+                                            class="
                         text-capitalize
                         t-text-white
                         vh-footer-primary__title
@@ -344,7 +271,8 @@
                                         </h3>
                                         <ul class="list list--column vh-footer-list">
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="about.html" class="
+                                                <a href="about.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -354,7 +282,8 @@
                                                 </a>
                                             </li>
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="contact.html" class="
+                                                <a href="contact.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -364,7 +293,8 @@
                                                 </a>
                                             </li>
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="blog-post.html" class="
+                                                <a href="blog-post.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -374,7 +304,8 @@
                                                 </a>
                                             </li>
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="faq.html" class="
+                                                <a href="faq.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -384,7 +315,8 @@
                                                 </a>
                                             </li>
                                             <li class="vh-footer-list__item list--column__item">
-                                                <a href="investor.html" class="
+                                                <a href="investor.html"
+                                                    class="
                             t-link
                             vh-footer-list__link
                             text-capitalize
@@ -396,7 +328,8 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-4">
-                                        <h3 class="
+                                        <h3
+                                            class="
                         text-capitalize
                         t-text-white
                         vh-footer-primary__title
@@ -406,7 +339,8 @@
                                         <ul class="list list--column">
                                             <li class="list--column__item">
                                                 <div class="d-flex">
-                                                    <span class="
+                                                    <span
+                                                        class="
                               d-inline-block
                               t-fw-md
                               text-capitalize
@@ -428,7 +362,8 @@
                                             </li>
                                             <li class="list--column__item">
                                                 <div class="d-flex">
-                                                    <span class="
+                                                    <span
+                                                        class="
                               d-inline-block
                               t-fw-md
                               text-capitalize
@@ -440,17 +375,22 @@
                                                     </span>
                                                     <ul class="list list--column">
                                                         <li class="list--column__item-sm t-text-white">
-                                                            <a href="https://template.viserlab.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6703020a0827000a060e0b4904080a">[email&#160;protected]</a>
+                                                            <a href="https://template.viserlab.com/cdn-cgi/l/email-protection"
+                                                                class="__cf_email__"
+                                                                data-cfemail="6703020a0827000a060e0b4904080a">[email&#160;protected]</a>
                                                         </li>
                                                         <li class="list--column__item-sm t-text-white">
-                                                            <a href="https://template.viserlab.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="533b2a3a23273c3d13343e323a3f7d3d3627">[email&#160;protected]</a>
+                                                            <a href="https://template.viserlab.com/cdn-cgi/l/email-protection"
+                                                                class="__cf_email__"
+                                                                data-cfemail="533b2a3a23273c3d13343e323a3f7d3d3627">[email&#160;protected]</a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </li>
                                         </ul>
                                         <form action="#" class="vh-newsletter t-mt-30">
-                                            <input type="text" class="vh-newsletter__input form-control" placeholder="email address" />
+                                            <input type="text" class="vh-newsletter__input form-control"
+                                                placeholder="email address" />
                                             <button class="vh-newsletter__btn flex-shrink-0">
                                                 <i class="bx bxs-paper-plane"></i>
                                             </button>
@@ -477,7 +417,6 @@
         <!-- Footer End -->
 
         <!-- Scripts  -->
-        <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/jquery.nice-select.js"></script>
         <script src="assets/js/bootstrap.bundle.js"></script>
@@ -487,6 +426,5 @@
         <script src="assets/js/app.js"></script>
 </body>
 
-<!-- Mirrored from template.viserlab.com/viserhyip/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 11:34:50 GMT -->
 
 </html>

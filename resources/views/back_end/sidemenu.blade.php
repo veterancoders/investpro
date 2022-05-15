@@ -47,7 +47,7 @@
                 </div>
 
 
-                <div class="menu-item menu-accordion">
+                <div class="menu-item">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm001.svg-->
@@ -64,7 +64,8 @@
                         <a href="{{ url('/dashboard')}}"><span class="menu-title">Investor Pro</span></a>
 
                     </span>
-                    @if(auth()->user()->role == 'administrator')
+
+                    @if(isAdmin())
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                         <span class="menu-link">
                             <span class="menu-icon">
@@ -77,29 +78,17 @@
                                 </span>
                                 <!--end::Svg Icon-->
                             </span>
-                            <span class="menu-title">User Management</span>
+                            <span class="menu-title">Customers</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <div class="menu-sub menu-sub-accordion">
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                                <span class="menu-link">
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('customers')}}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Users</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div class="menu-sub menu-sub-accordion">
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('index')}}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Users List</span>
-                                        </a>
-                                    </div>
-                                   
-                                </div>
+                                    <span class="menu-title">Manage Customers</span>
+                                </a>
                             </div>
                             
                         </div>

@@ -25,15 +25,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('front_end.index');
-});
+})->name('home');
+
+Route::get('/about', function () {
+    return view('front_end.about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('front_end.contact');
+})->name('contact');
+
+Route::get('/frequently-asked-question', function () {
+    return view('front_end.faq');
+})->name('faq');
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'] )->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 // Users ..........///////...
 //User Management
-Route::get('index', [UserController::class, 'index'])->name('index')->middleware('auth');
-Route::get('/view_user/{id}', [UserController::class, 'view'])->name('view_user')->middleware('auth');
+Route::get('customers', [UserController::class, 'index'])->name('customers')->middleware('auth');
+Route::get('/customers/{id}', [UserController::class, 'view'])->name('customer_show')->middleware('auth');
+Route::get('/customers/{id}/edit', [UserController::class, 'view'])->name('customer_edit')->middleware('auth');
+Route::get('/customers/{id}/delete', [UserController::class, 'view'])->name('customer_delete')->middleware('auth');
 
 //plans..................///....
 //1. Pland List
@@ -77,8 +92,6 @@ Route::post('/withdraw', [WithdrawalController::class, 'create'])->name('add_wit
 
 //3. Withdrawal Status
 Route::get('/change-withdrawal-status/{id}', [WithdrawalController::class, 'changeStatus'])->name('changewithdrawalStatus')->middleware('auth');
-
-
 
 //settings.....///....
 Route::get('/view-settings', [WebsiteController::class, 'settings'])->name('view_settings')->middleware('auth');
