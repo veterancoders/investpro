@@ -272,7 +272,7 @@
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
                                 <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Select a country..." class="form-select form-select-solid form-select-lg fw-bold">
-                                    <option value="{{ auth()->user()->country}}">Select a Country...</option>
+                                    <option value="{{ auth()->user()->country}}">{{ auth()->user()->country}}</option>
                                     <option data-kt-flag="flags/afghanistan.svg" value="AF">Afghanistan</option>
                                     <option data-kt-flag="flags/aland-islands.svg" value="AX">Aland Islands</option>
                                     <option data-kt-flag="flags/albania.svg" value="AL">Albania</option>
@@ -508,7 +508,7 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <textarea class="form-control form-control-lg form-control-solid" value="{{ auth()->user()->bio}}" name="bio"></textarea>
+                                <textarea class="form-control form-control-lg form-control-solid" value="{{ auth()->user()->bio}}" name="bio">{{ auth()->user()->bio}}</textarea>
                             </div>
                         </div>
                         <!--begin::Input group-->
@@ -552,7 +552,7 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-3 fv-row">
-                                <input type="date" name="date_of_birth" class="form-control form-control-lg form-control-solid">
+                                <input type="date" name="date_of_birth" value="{{ auth()->user()->date_of_birth}}" class="form-control form-control-lg form-control-solid">
                             </div>
                         </div>
                     </div>

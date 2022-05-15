@@ -28,8 +28,8 @@ namespace App;
                     <!--end::Title-->
                     <!--begin::Description-->
                     <div class="text-muted fw-bold fs-5">Here you can View Investments </div>
+                    @if($investment->payment_prove != 'null')
 
-                 
                     <ul id="example">
                         <li><span class="days">00</span>
                             <p class="days_text">Days</p>
@@ -47,6 +47,7 @@ namespace App;
                             <p class="seconds_text">Seconds</p>
                         </li>
                     </ul>
+                    @endif
                 </div>
                 <!--end::Heading-->
                 <x-auth-validation-errors class="mb-4" :errors="$errors" style="color: red;" />
@@ -110,9 +111,9 @@ namespace App;
                     <div class="col-md-6 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Payment prove</label>
 
-
-                        <img src="{{ asset('images/payment_prove/' . $investment->payment_prove) }}" style="width: 400px; height:200px;border-radius:3px;padding-top:15px;">
-
+                        <a href="{{ asset('images/payment_prove/' . $investment->payment_prove) }}" target="_blank">
+                            <img src="{{ asset('images/payment_prove/' . $investment->payment_prove) }}" style="width: 400px; height:200px;border-radius:3px;padding-top:15px;">
+                        </a>
 
                     </div>
                 </div>
