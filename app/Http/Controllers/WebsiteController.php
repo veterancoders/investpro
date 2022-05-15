@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Investment;
 use App\Models\Plan;
+use App\Models\Wallet;
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,21 @@ class WebsiteController extends Controller
             return view('back_end.plans.index', $view);
         }
     }
+    public function viewplan($id)
+    {
+
+        if (Auth::user()->role = 'administrator') {
+
+
+            $plan = Plan::find($id);
+            $data['data'] = $plan;
+
+            return view('back_end.plans.view', $data);
+        }
+    }
+
+
+
 
     // deposits
     public function deposits()
@@ -59,10 +75,10 @@ class WebsiteController extends Controller
     {
 
         if (Auth::user()->role == 'administrator') {
-           
+
             $withdrawal = Withdrawal::all();
             $withdrawals['withdrawal'] = $withdrawal;
-            return view('back_end.withdrawal.list', $withdrawals); 
+            return view('back_end.withdrawal.list', $withdrawals);
         } else {
 
             $withdrawal = Withdrawal::where('user_id', auth()->id())->get();
@@ -72,14 +88,37 @@ class WebsiteController extends Controller
     }
 
     //settings
-    public function settings(){
+    public function settings()
+    {
 
         return view('back_end.settings');
     }
     //account_settings
 
-    public function account_settings(){
+    public function account_settings()
+    {
 
         return view('back_end.account_settings');
+    }
+
+    //transactions
+
+    public function transactions()
+    {
+
+        $transactions = Wallet::all();
+
+        $data['transactions'] = $transactions;
+
+        return view('back_end.transactions', $data);
+    }
+    public function delete_transaction($id)
+    {
+
+        $transaction = Wallet::find($id);
+
+        $transaction->delete();
+
+        return redirect()->back();
     }
 }

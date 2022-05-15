@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function getImageAttribute($value)
+    {
+        return asset('images/' . $value);
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -41,4 +45,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+  
 }

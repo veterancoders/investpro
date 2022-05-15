@@ -135,9 +135,9 @@
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-xl-9 fv-row">
-                            <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/blank.svg');">
+                            <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{ asset('images/logo/' . setting('eth_barcode')) }}');">
                                 <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-125px h-125px bgi-position-center" style="background-size: 100%; background-image: url('assets/media/svg/avatars/blank.svg')"></div>
+                                <div class="image-input-wrapper w-125px h-125px bgi-position-center" style="background-size: 100%; background-image: url('{{ asset('images/logo/' . setting('eth_barcode')) }}')"></div>
                                 <!--end::Preview existing avatar-->
                                 <!--begin::Label-->
                                 <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">

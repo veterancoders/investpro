@@ -86,36 +86,9 @@
 
                         <!--end::Col-->
                     </div>
-                    <div class="row g-9 mb-8">
-                        <!--begin::Col-->
-                        <div class="col-md-12 fv-row">
-                            <label class="required fs-6 fw-bold mb-2">Payment_prove</label>
-                            <input type="file" class="form-control" placeholder="Select a file" name="payment_prove" required />
+                    <input type="hidden" name="payment_prove" value="null">
 
-                        </div>
-
-
-                        <!--end::Col-->
-                    </div>
-
-
-                    <div class="row g-9 mb-8">
-                        <!--begin::Col-->
-                        <div class="col-md-6 fv-row">
-                            <label class=" fs-6 fw-bold mb-2">Currency</label>
-                            <select class="required form-control form-control-solid mb-2" name="currency" data-control="select2" data-search="true" data-placeholder="Select currency">
-                                <option></option>
-                                <option value="USD">USD</option>
-                                <option value="NGN">NGN</option>
-                                <option value="EUR">EUR</option>
-                                <option value="PND">PND</option>
-                                <option value="YEN">YEN</option>
-                                <option value="CUD">CUD</option>
-
-
-                            </select>
-                        </div>
-                    </div>
+                  
 
                     <div class="text-center">
                         <button type="reset" id="kt_modal_new_target_cancel" class="btn btn-light me-3">Cancel</button>
