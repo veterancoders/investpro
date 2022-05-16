@@ -25,7 +25,7 @@ class AccountController extends Controller
         $user->address = request('address');
         $user->bio = request('bio');
 
-        $user->date_of_birth = request('date_of_birth');
+        //$user->date_of_birth = request('date_of_birth');
         $user->gender = request('gender');
         $user->save();
 

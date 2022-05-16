@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ViserHyip</title>
+    <title>Khristós Trade</title>
     <!-- favicon -->
     <link rel="icon" href="assets/img/favicon.png" sizes="16x16" type="image/png" />
     <!-- Stylesheet Link -->
@@ -18,15 +18,14 @@
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader__container">
-            <div class="preloader__text text-capitalize">V</div>
+            <div class="preloader__text text-capitalize">K</div>
+            <div class="preloader__text text-capitalize">h</div>
+            <div class="preloader__text text-capitalize">r</div>
             <div class="preloader__text text-capitalize">i</div>
             <div class="preloader__text text-capitalize">s</div>
-            <div class="preloader__text text-capitalize">e</div>
-            <div class="preloader__text text-capitalize">r</div>
-            <div class="preloader__text text-capitalize">h</div>
-            <div class="preloader__text text-capitalize">y</div>
-            <div class="preloader__text text-capitalize">i</div>
-            <div class="preloader__text text-capitalize">p</div>
+            <div class="preloader__text text-capitalize">t</div>
+            <div class="preloader__text text-capitalize">ó</div>
+            <div class="preloader__text text-capitalize">s</div>
         </div>
     </div>
     <!-- Preloader -->

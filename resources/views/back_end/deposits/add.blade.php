@@ -30,7 +30,7 @@
                     <!--begin::Heading-->
                     <div class="mb-13 text-center">
                         <!--begin::Title-->
-                        <h1 class="mb-3">Add new deposits | Investment</h1>
+                        <h1 class="mb-3">Add Investment</h1>
                         <!--end::Title-->
                         <!--begin::Description-->
                         <div class="text-muted fw-bold fs-5">Here you can add your Investment

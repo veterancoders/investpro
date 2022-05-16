@@ -6,12 +6,11 @@
         <div class="row g-3 justify-content-center">
             <div class="col-md-8 col-lg-6 text-center text-lg-start">
                 <h1 class="vh-hero__content-title text-capitalize mb-3">
-                    Hyip investment & get
-                    <span class="t-primary-clr">you profit</span>
+                    Trade with Khristós & get
+                    <span class="t-primary-clr">your profit</span>
                 </h1>
                 <p class="vh-hero__content-text">
-                    Maecenas tempus tellus eget condimentum rhoncus sem quam semper
-                    libero
+                    Khristós offer's you a second chance by giving you access to  making more coins within the space of days to few hours depending on your choiced active plan.
                 </p>
                 <a href="{{ route('register')}}" class="
                   btn btn--lg
@@ -44,7 +43,7 @@
                 vh-section-title
               "
             >
-              Our Investment Plan
+              
             </h2>
             <p class="vh-section-title--text t-text-white text-center mx-auto">
               Maecenas tempus tellus eget condimentum rhoncus sem quam semper
@@ -54,19 +53,21 @@
         </div>
         <div class="t-mt-40">
           <div class="row g-3 g-lg-4">
+
+            @foreach (App\Models\Plan::all() as $plan)
             <div class="col-md-6 col-xl-3">
               <div class="vh-plan-card t-bg-gradient-teal text-center">
                 <div class="vh-plan-card__head">
-                  <h2 class="t-text-white text-center">10%</h2>
+                  <h2 class="t-text-white text-center">{{ $plan->days }}</h2>
                   <span
                     class="vh-plan-card__head-text text-capitalize text-center"
-                    >hourly</span
+                    >Days</span
                   >
                 </div>
                 <hr class="vh-plan-card__seperate" />
                 <div class="vh-plan-card__body">
                   <span class="vh-plan-card__body-info text-uppercase mb-3"
-                    >forever</span
+                    >{{ $plan->name }}</span
                   >
                   <ul class="list list--column vh-plan-card__list">
                     <li class="vh-plan-card__list-item">
@@ -74,7 +75,7 @@
                         min :
                       </div>
                       <div class="vh-plan-card__list-text text-uppercase">
-                        15 USD
+                        {{ $plan->min }}
                       </div>
                     </li>
                     <li class="vh-plan-card__list-item">
@@ -82,118 +83,24 @@
                         max :
                       </div>
                       <div class="vh-plan-card__list-text text-uppercase">
-                        30 USD
+                        {{ $plan->max }}
                       </div>
                     </li>
+                    <li class="vh-plan-card__list-item">
+                        <div class="vh-plan-card__list-text text-capitalize">
+                        Payout :
+                        </div>
+                        <div class="vh-plan-card__list-text text-uppercase">
+                          {{ $plan->profit_percentage }}
+                        </div>
+                      </li>
                   </ul>
+                  
+                  
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="vh-plan-card t-bg-gradient-orange text-center">
-                <div class="vh-plan-card__head">
-                  <h2 class="t-text-white text-center">123%</h2>
-                  <span
-                    class="vh-plan-card__head-text text-capitalize text-center"
-                    >hourly</span
-                  >
-                </div>
-                <hr class="vh-plan-card__seperate" />
-                <div class="vh-plan-card__body">
-                  <span class="vh-plan-card__body-info text-uppercase mb-3"
-                    >forever</span
-                  >
-                  <ul class="list list--column vh-plan-card__list">
-                    <li class="vh-plan-card__list-item">
-                      <div class="vh-plan-card__list-text text-capitalize">
-                        min :
-                      </div>
-                      <div class="vh-plan-card__list-text text-uppercase">
-                        15 USD
-                      </div>
-                    </li>
-                    <li class="vh-plan-card__list-item">
-                      <div class="vh-plan-card__list-text text-capitalize">
-                        max :
-                      </div>
-                      <div class="vh-plan-card__list-text text-uppercase">
-                        30 USD
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="vh-plan-card t-bg-gradient-purple text-center">
-                <div class="vh-plan-card__head">
-                  <h2 class="t-text-white text-center">160%</h2>
-                  <span
-                    class="vh-plan-card__head-text text-capitalize text-center"
-                    >hourly</span
-                  >
-                </div>
-                <hr class="vh-plan-card__seperate" />
-                <div class="vh-plan-card__body">
-                  <span class="vh-plan-card__body-info text-uppercase mb-3"
-                    >after 3 days</span
-                  >
-                  <ul class="list list--column vh-plan-card__list">
-                    <li class="vh-plan-card__list-item">
-                      <div class="vh-plan-card__list-text text-capitalize">
-                        min :
-                      </div>
-                      <div class="vh-plan-card__list-text text-uppercase">
-                        15 USD
-                      </div>
-                    </li>
-                    <li class="vh-plan-card__list-item">
-                      <div class="vh-plan-card__list-text text-capitalize">
-                        max :
-                      </div>
-                      <div class="vh-plan-card__list-text text-uppercase">
-                        30 USD
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="vh-plan-card t-bg-gradient-green text-center">
-                <div class="vh-plan-card__head">
-                  <h2 class="t-text-white text-center">200%</h2>
-                  <span
-                    class="vh-plan-card__head-text text-capitalize text-center"
-                    >hourly</span
-                  >
-                </div>
-                <hr class="vh-plan-card__seperate" />
-                <div class="vh-plan-card__body">
-                  <span class="vh-plan-card__body-info text-uppercase mb-3"
-                    >after 3 days</span
-                  >
-                  <ul class="list list--column vh-plan-card__list">
-                    <li class="vh-plan-card__list-item">
-                      <div class="vh-plan-card__list-text text-capitalize">
-                        min :
-                      </div>
-                      <div class="vh-plan-card__list-text text-uppercase">
-                        15 USD
-                      </div>
-                    </li>
-                    <li class="vh-plan-card__list-item">
-                      <div class="vh-plan-card__list-text text-capitalize">
-                        max :
-                      </div>
-                      <div class="vh-plan-card__list-text text-uppercase">
-                        30 USD
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -213,12 +120,7 @@
                 <img src="assets/img/about-img.png" alt="viserhyip" class="img-fluid" />
             </div>
             <div class="col-lg-6">
-                <span class="
-                vh-section-title--sub
-                text-uppercase
-                t-primary-clr
-                text-center text-lg-start
-              ">about us</span>
+                
                 <h2 class="
                 t-text-white
                 text-capitalize
@@ -226,7 +128,7 @@
                 vh-section-title
                 text-center text-lg-start
               ">
-                    Our Investment Plan
+                    About Us
                 </h2>
                 <p class="
                 vh-section-title--text
@@ -239,49 +141,11 @@
                 me-lg-auto
                 ms-lg-0
               ">
-                    Aenean vulputate eleifend tellus. Aenean leo ligul porttitoeu
-                    consequat vitae eleifend acenim
+              Founded in 2022, Khristós Trade is a global cryptocurrency company operating across Oceania, US, Africa & Europe. The purpose was to stop the number of suicides  reported recently owing to cryptocurrency losses, pointing towards the long-standing connection between financial woes and mental health.<br><br>
+              More recently, an individual from Turkey killed his two children and wife before dying by suicide due to losses from bitcoin investments in March this year. Just a month later, a temporary public sector bank employee in India consumed rat poison and died after losing over $13,600 in bitcoin investments due to a ‘technical lapse,’ the New Indian Express reported.
+Thesame month, an investor from South Korea also died by suicide after suffering losses of over $180,000 in an investment in unnamed crypto assets, according to a Crypto News report. These are just some of the examples of cryptocurrency-related suicides reported recently.
                 </p>
-                <ul class="list list--column align-items-center align-items-lg-start">
-                    <li class="list--column__item">
-                        <div class="d-flex align-items-center">
-                            <div class="me-4 vh-icon-box-1 flex-shrink-0" style="background-image: url(assets/img/icon-bg-1.svg)">
-                                <i class="bx bx-headphone"></i>
-                            </div>
-                            <div class="vh-article">
-                                <span class="
-                        vh-article__title
-                        t-text-white
-                        text-capitalize
-                        mb-2
-                      ">24/7 support</span>
-                                <p class="vh-article__text t-text-white">
-                                    Maecenas tempus tellus eget condimentum rhoncus sem quam
-                                    semper libero.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list--column__item">
-                        <div class="d-flex align-items-center">
-                            <div class="me-4 vh-icon-box-1 flex-shrink-0" style="background-image: url(assets/img/icon-bg-2.svg)">
-                                <i class="bx bx-rocket"></i>
-                            </div>
-                            <div class="vh-article">
-                                <span class="
-                        vh-article__title
-                        t-text-white
-                        text-capitalize
-                        mb-2
-                      ">We Innovate</span>
-                                <p class="vh-article__text t-text-white">
-                                    Maecenas tempus tellus eget condimentum rhoncus sem quam
-                                    semper libero.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                
             </div>
         </div>
     </div>
@@ -434,7 +298,7 @@
                 mb-3
                 vh-section-title
               ">
-                    Our Top Hyip Investor
+                    Our Top Khristós Investors
                 </h2>
                 <p class="vh-section-title--text t-text-white text-center mx-auto">
                     Maecenas tempus tellus eget condimentum rhoncus sem quam semper
@@ -510,39 +374,6 @@
 </section>
 <!-- Investor End -->
 
-<!-- Referral Section  -->
-<section class="referral-section t-bg-gradient-orange t-pt-120 t-pb-120">
-    <div class="container">
-        <div class="row g-3 justify-content-center">
-            <div class="col-md-10 col-xl-6">
-                <h2 class="
-                t-text-white
-                text-capitalize text-center
-                mb-3
-                vh-section-title
-              ">
-                    30% Referral Commission
-                </h2>
-                <p class="vh-section-title--text t-text-white text-center mx-auto">
-                    Aenean vulputate eleifend tellus. Aenean leo ligul porttitoeu
-                    consequat vitae eleifend acenim
-                </p>
-                <div class="text-center">
-                    <a href="create-account.html" class="
-                  btn
-                  button-solid
-                  btn-grad btn-grad--teal
-                  text-uppercase
-                  border-0
-                ">
-                        get started
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Referral Section End -->
 
 <!-- Feature Section  -->
 <section class="feature-section t-pt-115 t-pb-100">
@@ -596,10 +427,11 @@
                           text-capitalize
                           mb-2
                           text-lg-end
-                        ">Reliability</span>
+                        ">STRONG SECURITY
+                    </span>
                                     <p class="vh-article__text t-text-white text-lg-end">
-                                        Maecenas tempus tellus eget condimentum rhoncus sem quam
-                                        semper.
+                                        Protection against DDoS attacks,
+full data encryption.
                                     </p>
                                 </div>
                             </div>
@@ -623,10 +455,10 @@
                           text-capitalize
                           mb-2
                           text-lg-end
-                        ">Comodo SSL</span>
+                        ">WORLD COVERAGE</span>
                                     <p class="vh-article__text t-text-white text-lg-end">
-                                        Maecenas tempus tellus eget condimentum rhoncus sem
-                                        quam.
+                                        Providing services in 99% countries
+around all the globe.
                                     </p>
                                 </div>
                             </div>
@@ -650,10 +482,11 @@
                           text-capitalize
                           mb-2
                           text-lg-end
-                        ">Registered Company</span>
+                        ">PAYMENT OPTIONS
+                    </span>
                                     <p class="vh-article__text t-text-white text-lg-end">
-                                        Maecenas tempus tellus eget condimentum rhoncus sem quam
-                                        semper.
+                                        Popular methods: Visa, MasterCard,
+bank transfer, cryptocurrency.
                                     </p>
                                 </div>
                             </div>
@@ -683,10 +516,10 @@
                           t-text-white
                           text-capitalize
                           mb-2
-                        ">Quick Withdrawal</span>
+                        ">COST EFFICIENCY</span>
                                     <p class="vh-article__text t-text-white">
-                                        Maecenas tempus tellus eget condimentum rhoncus sem quam
-                                        semper.
+                                        Reasonable trading fees for takers
+and all market makers.
                                     </p>
                                 </div>
                             </div>
@@ -704,10 +537,11 @@
                           t-text-white
                           text-capitalize
                           mb-2
-                        ">Strong Protection</span>
+                        ">HIGH LIQUIDITY
+                    </span>
                                     <p class="vh-article__text t-text-white">
-                                        Maecenas tempus tellus eget condimentum rhoncus sem
-                                        quam.
+                                        Fast access to high liquidity orderbook
+for top currency pairs.
                                     </p>
                                 </div>
                             </div>
@@ -725,10 +559,11 @@
                           t-text-white
                           text-capitalize
                           mb-2
-                        ">Protected Website</span>
+                        ">[24/7] SUPPORT</span>
                                     <p class="vh-article__text t-text-white">
-                                        Maecenas tempus tellus eget condimentum rhoncus sem quam
-                                        semper.
+                                        Our live support is a key ingredient in the success of our company services. Our experts are well-qualified. We provide you with qualitative support consult 24/7 online live chat support for our members..
+
+
                                     </p>
                                 </div>
                             </div>
@@ -1197,238 +1032,6 @@
 </section>
 <!-- Work Process Section End -->
 
-<!-- FAQ Section  -->
-<section class="faq-section t-pt-120 t-pb-120">
-    <div class="container">
-        <div class="row g-3 justify-content-center">
-            <div class="col-md-10 col-xl-8">
-                <span class="
-                vh-section-title--sub
-                text-uppercase
-                t-primary-clr
-                text-center
-              ">faq
-                </span>
-                <h2 class="
-                t-text-white
-                text-capitalize text-center
-                mb-3
-                vh-section-title
-              ">
-                    Frequently asked questions
-                </h2>
-                <p class="vh-section-title--text t-text-white text-center mx-auto">
-                    Curabitur ullamcorper ultricies nisi Nam eget dui. Etiam rhoncus
-                    fdsf df vulputate.
-                </p>
-            </div>
-        </div>
-        <div class="t-mt-40">
-            <div class="row g-3 justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion vh-accordion vh-accordion--secondary" id="faqAccordion">
-                        <div class="accordion-item vh-accordion__item">
-                            <h2 class="accordion-header vh-accordion__header">
-                                <button class="accordion-button vh-accordion__btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
-                                    Why You should become an Investor?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body vh-accordion__body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Natus quos numquam atque exercitationem reprehenderit
-                                    voluptas dolores ad repudiandae asperiores. Excepturi
-                                    error dolor at veniam, modi vel quos tempora pariatur
-                                    eaque.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item vh-accordion__item">
-                            <h2 class="accordion-header vh-accordion__header">
-                                <button class="accordion-button vh-accordion__btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false">
-                                    Can I Invest Using Cryptocurrency?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body vh-accordion__body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Natus quos numquam atque exercitationem reprehenderit
-                                    voluptas dolores ad repudiandae asperiores. Excepturi
-                                    error dolor at veniam, modi vel quos tempora pariatur
-                                    eaque.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item vh-accordion__item">
-                            <h2 class="accordion-header vh-accordion__header">
-                                <button class="accordion-button vh-accordion__btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false">
-                                    Why You Choose Us?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body vh-accordion__body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Natus quos numquam atque exercitationem reprehenderit
-                                    voluptas dolores ad repudiandae asperiores. Excepturi
-                                    error dolor at veniam, modi vel quos tempora pariatur
-                                    eaque.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item vh-accordion__item">
-                            <h2 class="accordion-header vh-accordion__header">
-                                <button class="accordion-button vh-accordion__btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false">
-                                    Why You should become an Investor?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body vh-accordion__body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Natus quos numquam atque exercitationem reprehenderit
-                                    voluptas dolores ad repudiandae asperiores. Excepturi
-                                    error dolor at veniam, modi vel quos tempora pariatur
-                                    eaque.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- FAQ Section End -->
-
-<!-- App section  -->
-<section class="app-section t-pt-120 t-pb-120">
-    <div class="container">
-        <div class="row g-5 g-lg-3">
-            <div class="col-lg-6">
-                <div class="text-center text-lg-start">
-                    <img src="assets/img/app-img.png" alt="viserhyip" class="img-fluid" />
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <span class="
-                vh-section-title--sub
-                text-uppercase
-                t-primary-clr
-                text-center text-lg-start
-              ">
-                    Hyip App
-                </span>
-                <h2 class="
-                t-text-white
-                text-capitalize
-                mb-2
-                vh-section-title
-                text-center text-lg-start
-              ">
-                    Download Our App
-                </h2>
-                <p class="
-                vh-section-title--text
-                t-text-white
-                lg-text
-                mb-4
-                text-center
-                mx-auto
-                text-lg-start
-                ms-lg-0
-              ">
-                    Aenean vulputate eleifend tellus. Aenean leo ligul porttitoeu
-                    consequat vitae eleifend acenim
-                </p>
-                <div class="t-mt-30">
-                    <div class="row g-3 justify-content-center justify-content-lg-start">
-                        <div class="col-md-5 col-lg-6">
-                            <h4 class="t-text-white text-capitalize mb-2">for android</h4>
-                            <ul class="list list--column list--bullet list--bullet-orange">
-                                <li class="list--column__item text-capitalize t-text-white">
-                                    Fast investment
-                                </li>
-                                <li class="list--column__item text-capitalize t-text-white">
-                                    Automatically Withdraw
-                                </li>
-                                <li class="list--column__item text-capitalize t-text-white">
-                                    Push Notification
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-5 col-lg-6">
-                            <h4 class="t-text-white text-capitalize mb-2">for IOS</h4>
-                            <ul class="list list--column list--bullet list--bullet-teal">
-                                <li class="list--column__item text-capitalize t-text-white">
-                                    Fast investment
-                                </li>
-                                <li class="list--column__item text-capitalize t-text-white">
-                                    Automatically Withdraw
-                                </li>
-                                <li class="list--column__item text-capitalize t-text-white">
-                                    Push Notification
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="t-mt-30">
-                    <div class="
-                  d-flex
-                  align-items-center
-                  flex-wrap
-                  justify-content-center justify-content-lg-start
-                ">
-                        <a href="contact.html" class="
-                    btn
-                    button-solid
-                    btn-grad btn-grad--orange
-                    text-uppercase
-                    my-2
-                    me-sm-2 me-md-3
-                  ">
-                            <span class="vh-download-btn">
-                                <span class="vh-download-btn__icon me-2">
-                                    <i class="bx bxl-play-store"></i>
-                                </span>
-                                <span class="vh-download-btn__content flex-column">
-                                    <span class="vh-download-btn__text-strong text-start">
-                                        download
-                                    </span>
-                                    <span class="vh-download-btn__text text-start text-capitalize">
-                                        for android
-                                    </span>
-                                </span>
-                            </span>
-                        </a>
-                        <a href="contact.html" class="
-                    btn
-                    button-solid
-                    btn-grad btn-grad--teal
-                    text-uppercase
-                    my-2
-                  ">
-                            <span class="vh-download-btn">
-                                <span class="vh-download-btn__icon me-2">
-                                    <i class="bx bxl-apple"></i>
-                                </span>
-                                <span class="vh-download-btn__content flex-column">
-                                    <span class="vh-download-btn__text-strong text-start">
-                                        download
-                                    </span>
-                                    <span class="vh-download-btn__text text-start text-capitalize">
-                                        for IOS
-                                    </span>
-                                </span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- App section End -->
-
 <!-- Testimonial  -->
 <section class="testimonial-section">
     <div class="container">
@@ -1548,210 +1151,5 @@
     </div>
 </section>
 <!-- Testimonial End -->
-
-<!-- Blog Post Section  -->
-<div class="t-pt-115 t-pb-120">
-    <div class="container">
-        <div class="row g-3 justify-content-center">
-            <div class="col-md-10 col-xl-8">
-                <span class="
-                vh-section-title--sub
-                text-uppercase
-                t-primary-clr
-                text-center
-              ">
-                    Blog Post
-                </span>
-                <h2 class="
-                t-text-white
-                text-capitalize text-center
-                mb-3
-                vh-section-title
-              ">
-                    Our Latest Blog Post
-                </h2>
-                <p class="vh-section-title--text t-text-white text-center mx-auto">
-                    Curabitur ullamcorper ultricies nisi Nam eget dui. Etiam rhoncus
-                    fdsf df vulputate.
-                </p>
-            </div>
-        </div>
-        <div class="t-mt-40">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="vh-blog-post">
-                        <a href="blog-details.html" class="t-link vh-blog-post__img">
-                            <img src="assets/img/post-1.png" alt="viserhyip" class="vh-blog-post__img-is" />
-                        </a>
-                        <div class="vh-blog-post__body">
-                            <h4 class="text-capitalize mb-3">
-                                <a href="blog-details.html" class="t-link vh-blog-post__title">
-                                    Faucibus Nullam Quis Ante Eti Qrci Egetros Saucibus
-                                    Tincnt.
-                                </a>
-                            </h4>
-                            <p class="t-text-white vh-blog-post__article">
-                                Donec interdum metus ehendrerit auet doldiam sagittis ligula
-                                eget egestas libero turpis velsra smiunc nulla testa peina
-                                ola oreso loerm ipsums amet
-                            </p>
-                            <hr class="vh-blog-post__hr" />
-                            <div class="vh-blog-post__footer">
-                                <ul class="list list--row justify-content-between">
-                                    <li class="list--row__item">
-                                        <div class="vh-blog-post__meta">
-                                            <div class="span vh-blog-post__meta-icon me-2">
-                                                <i class="bx bxs-user"></i>
-                                            </div>
-                                            <div class="
-                              span
-                              vh-blog-post__meta-text
-                              text-uppercase
-                              t-text-white
-                            ">
-                                                By
-                                                <a href="blog-post.html" class="t-link t-link--primary t-text-white">Robart Jons</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list--row__item">
-                                        <div class="vh-blog-post__meta">
-                                            <div class="span vh-blog-post__meta-icon me-2">
-                                                <i class="bx bxs-calendar"></i>
-                                            </div>
-                                            <div class="
-                              span
-                              vh-blog-post__meta-text
-                              text-uppercase
-                              t-text-white
-                            ">
-                                                <a href="blog-post.html" class="t-link t-link--primary t-text-white">25 May 2021</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="vh-blog-post">
-                        <a href="blog-details.html" class="t-link vh-blog-post__img">
-                            <img src="assets/img/post-2.png" alt="viserhyip" class="vh-blog-post__img-is" />
-                        </a>
-                        <div class="vh-blog-post__body">
-                            <h4 class="text-capitalize mb-3">
-                                <a href="blog-details.html" class="t-link vh-blog-post__title">
-                                    Faucibus Nullam Quis Ante Eti Qrci Egetros Saucibus
-                                    Tincnt.
-                                </a>
-                            </h4>
-                            <p class="t-text-white vh-blog-post__article">
-                                Donec interdum metus ehendrerit auet doldiam sagittis ligula
-                                eget egestas libero turpis velsra smiunc nulla testa peina
-                                ola oreso loerm ipsums amet
-                            </p>
-                            <hr class="vh-blog-post__hr" />
-                            <div class="vh-blog-post__footer">
-                                <ul class="list list--row justify-content-between">
-                                    <li class="list--row__item">
-                                        <div class="vh-blog-post__meta">
-                                            <div class="span vh-blog-post__meta-icon me-2">
-                                                <i class="bx bxs-user"></i>
-                                            </div>
-                                            <div class="
-                              span
-                              vh-blog-post__meta-text
-                              text-uppercase
-                              t-text-white
-                            ">
-                                                By
-                                                <a href="blog-post.html" class="t-link t-link--primary t-text-white">Robart Jons</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list--row__item">
-                                        <div class="vh-blog-post__meta">
-                                            <div class="span vh-blog-post__meta-icon me-2">
-                                                <i class="bx bxs-calendar"></i>
-                                            </div>
-                                            <div class="
-                              span
-                              vh-blog-post__meta-text
-                              text-uppercase
-                              t-text-white
-                            ">
-                                                <a href="blog-post.html" class="t-link t-link--primary t-text-white">25 May 2021</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="vh-blog-post">
-                        <a href="blog-details.html" class="t-link vh-blog-post__img">
-                            <img src="assets/img/post-3.png" alt="viserhyip" class="vh-blog-post__img-is" />
-                        </a>
-                        <div class="vh-blog-post__body">
-                            <h4 class="text-capitalize mb-3">
-                                <a href="blog-details.html" class="t-link vh-blog-post__title">
-                                    Faucibus Nullam Quis Ante Eti Qrci Egetros Saucibus
-                                    Tincnt.
-                                </a>
-                            </h4>
-                            <p class="t-text-white vh-blog-post__article">
-                                Donec interdum metus ehendrerit auet doldiam sagittis ligula
-                                eget egestas libero turpis velsra smiunc nulla testa peina
-                                ola oreso loerm ipsums amet
-                            </p>
-                            <hr class="vh-blog-post__hr" />
-                            <div class="vh-blog-post__footer">
-                                <ul class="list list--row justify-content-between">
-                                    <li class="list--row__item">
-                                        <div class="vh-blog-post__meta">
-                                            <div class="span vh-blog-post__meta-icon me-2">
-                                                <i class="bx bxs-user"></i>
-                                            </div>
-                                            <div class="
-                              span
-                              vh-blog-post__meta-text
-                              text-uppercase
-                              t-text-white
-                            ">
-                                                By
-                                                <a href="blog-post.html" class="t-link t-link--primary t-text-white">Robart Jons</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list--row__item">
-                                        <div class="vh-blog-post__meta">
-                                            <div class="span vh-blog-post__meta-icon me-2">
-                                                <i class="bx bxs-calendar"></i>
-                                            </div>
-                                            <div class="
-                              span
-                              vh-blog-post__meta-text
-                              text-uppercase
-                              t-text-white
-                            ">
-                                                <a href="blog-post.html" class="t-link t-link--primary t-text-white">25 May 2021</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Blog Post Section End -->
-
-
 
 @endsection

@@ -26,11 +26,7 @@
                     <!--begin::Title-->
                     <h1 class="mb-3">Payment Details</h1>
                     <!--end::Title-->
-                    <!--begin::Description-->
-                    <div class="text-muted fw-bold fs-5">Here you see the payment</div>
-
-
-
+                
                 </div>
                 <!--end::Heading-->
 
@@ -47,8 +43,8 @@
                     <!--end::Icon-->
                     <!--begin::Content-->
                     <div class="d-flex flex-column pe-0 pe-sm-10">
-                        <h5 class="mb-1">This is an alert with a thick border</h5>
-                        <span>The alert component can be used to highlight certain parts of your page for higher content visibility.</span>
+                        <h5 class="mb-1">Payment Account Details</h5>
+                        <span>You our Etherum or Barcode to make payment for your investment. One you payment is approve you investment will start running </span>
                     </div>
                     <!--end::Content-->
                     <!--begin::Close-->

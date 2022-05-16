@@ -28,7 +28,7 @@ namespace App;
                     <!--end::Title-->
                     <!--begin::Description-->
                     <div class="text-muted fw-bold fs-5">Here you can View Investments </div>
-                    @if($investment->payment_prove != 'null')
+                    @if($investment->status == 'approved')
 
                     <ul id="example">
                         <li><span class="days">00</span>
@@ -59,10 +59,11 @@ namespace App;
                         <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
                     </label>
                     <!--end::Label-->
-                    <input class="form-control form-control-solid" value="{{ $investment->plan->name}}">
+                    <input class="form-control form-control-solid" readonly disabled value="{{ $investment->plan->name}}">
 
                 </div>
 
+                @if(isAdmin())
                 <div class="d-flex flex-column mb-8 fv-row">
                     <!--begin::Label-->
                     <label class="d-flex align-items-center fs-6 fw-bold mb-2">
@@ -70,16 +71,17 @@ namespace App;
                         <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
                     </label>
                     <!--end::Label-->
-                    <input class="form-control form-control-solid" value="{{ $investment->user->name}}">
+                    <input class="form-control form-control-solid" value="{{ $investment->user->name}}" readonly disabled  >
 
                 </div>
+                @endif
 
                 <!--begin::Input group-->
                 <div class="row g-9 mb-8">
                     <!--begin::Col-->
                     <div class="col-md-12 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Investment Amount</label>
-                        <input type="number" class="form-control form-control-solid" value="{{ $investment->amount}}" />
+                        <input type="number" class="form-control form-control-solid" value="{{ $investment->amount}}" readonly disabled  />
 
                     </div>
 
@@ -105,18 +107,24 @@ namespace App;
 
 
                     <!--end::Col-->
-                </div>
+                </div> 
+
+
+                @if(!empty($investment->payment_prove) && $investment->payment_prove != 'null')
+
                 <div class="row g-9 mb-8">
                     <!--begin::Col-->
                     <div class="col-md-6 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Payment prove</label>
-
+                       
                         <a href="{{ asset('images/payment_prove/' . $investment->payment_prove) }}" target="_blank">
                             <img src="{{ asset('images/payment_prove/' . $investment->payment_prove) }}" style="width: 400px; height:200px;border-radius:3px;padding-top:15px;">
                         </a>
-
+                        
                     </div>
                 </div>
+                
+                @endif
             </div>
             <!--end::Modal body-->
         </div>
@@ -144,7 +152,7 @@ namespace App;
         days: 'Days',
         hideOnComplete: true
     }, function(container) {
-        alert('Done!');
+        //alert('Done!');
     });
 </script>
 
