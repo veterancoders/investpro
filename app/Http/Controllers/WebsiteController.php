@@ -98,7 +98,10 @@ class WebsiteController extends Controller
     public function account_settings()
     {
 
-        return view('back_end.account_settings');
+        $user = Auth::user();
+
+        $view['user'] = $user;
+        return view('back_end.account_settings',$view);
     }
 
     //transactions

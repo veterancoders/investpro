@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
-    public function update_account(Request $request)
+    public function update_account(Request $request, $id)
     {
-        $user = Auth::user();
+        $user = User::find($id);
+
         if ($request->hasFile('avatar')) {
             $file  = $request->file('avatar');
             $avatar = $file->getClientOriginalName();
@@ -24,8 +26,7 @@ class AccountController extends Controller
         $user->country = request('country');
         $user->address = request('address');
         $user->bio = request('bio');
-
-        //$user->date_of_birth = request('date_of_birth');
+        $user->date_of_birth = request('date_of_birth');
         $user->gender = request('gender');
         $user->save();
 

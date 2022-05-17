@@ -47,8 +47,9 @@ require __DIR__ . '/auth.php';
 //User Management
 Route::get('customers', [UserController::class, 'index'])->name('customers')->middleware('auth');
 Route::get('/customers/{id}', [UserController::class, 'view'])->name('customer_show')->middleware('auth');
-Route::get('/customers/{id}/edit', [UserController::class, 'view'])->name('customer_edit')->middleware('auth');
-Route::get('/customers/{id}/delete', [UserController::class, 'view'])->name('customer_delete')->middleware('auth');
+Route::get('/customers/{id}/edit', [UserController::class, 'edit'])->name('customer_edit')->middleware('auth');
+Route::post('/customer_account_update/{id}/edit', [UserController::class, 'update'])->name('customer_account_update')->middleware('auth');
+Route::get('/customers/{id}/delete', [UserController::class, 'delete'])->name('customer_delete')->middleware('auth');
 
 //plans..................///....
 //1. Pland List
@@ -104,6 +105,6 @@ Route::get('/delete_transaction/{id}', [WebsiteController::class, 'delete_transa
 
 //Account Settings...../////....
 Route::get('/account_settings', [WebsiteController::class, 'account_settings'])->name('account_settings')->middleware('auth');
-Route::post('/update_account', [AccountController::class, 'update_account'])->name('update_account')->middleware('auth');
+Route::post('/update_account/{id}', [AccountController::class, 'update_account'])->name('update_account')->middleware('auth');
 //change-email
 Route::post('/update-email', [AccountController::class, 'update_email'])->name('update_email')->middleware('auth');
