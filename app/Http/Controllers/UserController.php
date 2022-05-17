@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,6 +17,28 @@ class UserController extends Controller
             $users['users'] = $user;
             return view('back_end.users.index', $users);
         }
+    }
+
+    public function create(Request $request)
+    {
+        $user = new User;
+
+        if ($request->hasFile('avatar')) {
+            $file  = $request->file('avatar');
+            $avatar = $file->getClientOriginalName();
+            $file->move('images', $avatar);
+
+            $user->avatar =  $avatar;
+        }
+
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = Hash::make(request('password'));
+        $user->role =  request('role');
+
+        $user->save();
+
+        return redirect()->back();
     }
 
     public function view($id)
@@ -67,5 +90,4 @@ class UserController extends Controller
 
         return redirect()->route('customers');
     }
-
 }

@@ -46,6 +46,7 @@ require __DIR__ . '/auth.php';
 // Users ..........///////...
 //User Management
 Route::get('customers', [UserController::class, 'index'])->name('customers')->middleware('auth');
+Route::post('customers_create', [UserController::class, 'create'])->name('customers_create')->middleware('auth');
 Route::get('/customers/{id}', [UserController::class, 'view'])->name('customer_show')->middleware('auth');
 Route::get('/customers/{id}/edit', [UserController::class, 'edit'])->name('customer_edit')->middleware('auth');
 Route::post('/customer_account_update/{id}/edit', [UserController::class, 'update'])->name('customer_account_update')->middleware('auth');

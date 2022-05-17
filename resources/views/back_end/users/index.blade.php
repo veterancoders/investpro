@@ -101,7 +101,8 @@
 										<!--begin::Modal body-->
 										<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
 											<!--begin::Form-->
-											<form id="kt_modal_add_user_form" class="form" action="#">
+											<form  class="form" action="{{ route('customers_create')}}" method="POST" enctype="multipart/form-data">
+												@csrf
 												<!--begin::Scroll-->
 												<div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
 													<!--begin::Input group-->
@@ -110,9 +111,9 @@
 														<label class="d-block fw-bold fs-6 mb-5">Avatar</label>
 														<!--end::Label-->
 														<!--begin::Image input-->
-														<div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/blank.svg')">
+														<div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url()">
 															<!--begin::Preview existing avatar-->
-															<div class="image-input-wrapper w-125px h-125px" style="background-image: url(assets/media/avatars/300-6.jpg);"></div>
+															<div class="image-input-wrapper w-125px h-125px" style="background-image: url();"></div>
 															<!--end::Preview existing avatar-->
 															<!--begin::Label-->
 															<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
@@ -146,7 +147,7 @@
 														<label class="required fw-bold fs-6 mb-2">Full Name</label>
 														<!--end::Label-->
 														<!--begin::Input-->
-														<input type="text" name="user_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" value="Emma Smith" />
+														<input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name">
 														<!--end::Input-->
 													</div>
 													<!--end::Input group-->
@@ -156,7 +157,17 @@
 														<label class="required fw-bold fs-6 mb-2">Email</label>
 														<!--end::Label-->
 														<!--begin::Input-->
-														<input type="email" name="user_email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" value="smith@kpmg.com" />
+														<input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" />
+														<!--end::Input-->
+													</div>
+													<!--end::Input group-->
+														<!--begin::Input group-->
+														<div class="fv-row mb-7">
+														<!--begin::Label-->
+														<label class="required fw-bold fs-6 mb-2">Password</label>
+														<!--end::Label-->
+														<!--begin::Input-->
+														<input type="password" name="password" class="form-control form-control-solid mb-3 mb-lg-0" />
 														<!--end::Input-->
 													</div>
 													<!--end::Input group-->
@@ -171,7 +182,7 @@
 															<!--begin::Radio-->
 															<div class="form-check form-check-custom form-check-solid">
 																<!--begin::Input-->
-																<input class="form-check-input me-3" name="user_role" type="radio" value="0" id="kt_modal_update_role_option_0" checked='checked' />
+																<input class="form-check-input me-3" name="role" type="radio" value="administrator" />
 																<!--end::Input-->
 																<!--begin::Label-->
 																<label class="form-check-label" for="kt_modal_update_role_option_0">
@@ -189,73 +200,19 @@
 															<!--begin::Radio-->
 															<div class="form-check form-check-custom form-check-solid">
 																<!--begin::Input-->
-																<input class="form-check-input me-3" name="user_role" type="radio" value="1" id="kt_modal_update_role_option_1" />
+																<input class="form-check-input me-3" name="role" type="radio" value="user" />
 																<!--end::Input-->
 																<!--begin::Label-->
 																<label class="form-check-label" for="kt_modal_update_role_option_1">
-																	<div class="fw-bolder text-gray-800">Developer</div>
-																	<div class="text-gray-600">Best for developers or people primarily using the API</div>
+																	<div class="fw-bolder text-gray-800">User</div>
+																	<div class="text-gray-600">Best for users or people primarily using the API</div>
 																</label>
 																<!--end::Label-->
 															</div>
 															<!--end::Radio-->
 														</div>
 														<!--end::Input row-->
-														<div class='separator separator-dashed my-5'></div>
-														<!--begin::Input row-->
-														<div class="d-flex fv-row">
-															<!--begin::Radio-->
-															<div class="form-check form-check-custom form-check-solid">
-																<!--begin::Input-->
-																<input class="form-check-input me-3" name="user_role" type="radio" value="2" id="kt_modal_update_role_option_2" />
-																<!--end::Input-->
-																<!--begin::Label-->
-																<label class="form-check-label" for="kt_modal_update_role_option_2">
-																	<div class="fw-bolder text-gray-800">Analyst</div>
-																	<div class="text-gray-600">Best for people who need full access to analytics data, but don't need to update business settings</div>
-																</label>
-																<!--end::Label-->
-															</div>
-															<!--end::Radio-->
-														</div>
-														<!--end::Input row-->
-														<div class='separator separator-dashed my-5'></div>
-														<!--begin::Input row-->
-														<div class="d-flex fv-row">
-															<!--begin::Radio-->
-															<div class="form-check form-check-custom form-check-solid">
-																<!--begin::Input-->
-																<input class="form-check-input me-3" name="user_role" type="radio" value="3" id="kt_modal_update_role_option_3" />
-																<!--end::Input-->
-																<!--begin::Label-->
-																<label class="form-check-label" for="kt_modal_update_role_option_3">
-																	<div class="fw-bolder text-gray-800">Support</div>
-																	<div class="text-gray-600">Best for employees who regularly refund payments and respond to disputes</div>
-																</label>
-																<!--end::Label-->
-															</div>
-															<!--end::Radio-->
-														</div>
-														<!--end::Input row-->
-														<div class='separator separator-dashed my-5'></div>
-														<!--begin::Input row-->
-														<div class="d-flex fv-row">
-															<!--begin::Radio-->
-															<div class="form-check form-check-custom form-check-solid">
-																<!--begin::Input-->
-																<input class="form-check-input me-3" name="user_role" type="radio" value="4" id="kt_modal_update_role_option_4" />
-																<!--end::Input-->
-																<!--begin::Label-->
-																<label class="form-check-label" for="kt_modal_update_role_option_4">
-																	<div class="fw-bolder text-gray-800">Trial</div>
-																	<div class="text-gray-600">Best for people who need to preview content data, but don't need to make any updates</div>
-																</label>
-																<!--end::Label-->
-															</div>
-															<!--end::Radio-->
-														</div>
-														<!--end::Input row-->
-														<!--end::Roles-->
+													
 													</div>
 													<!--end::Input group-->
 												</div>
