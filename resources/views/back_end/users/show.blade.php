@@ -17,7 +17,7 @@
 						<div class="d-flex flex-center flex-column mb-5">
 							<!--begin::Avatar-->
 							<div class="symbol symbol-100px symbol-circle mb-7">
-								<img src="assets/media/avatars/300-1.jpg" alt="image" />
+								<img src="{{ asset('images/' . $users->avatar) }}" alt="image" />
 							</div>
 							<!--end::Avatar-->
 							<!--begin::Name-->
