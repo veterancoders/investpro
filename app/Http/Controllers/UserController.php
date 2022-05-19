@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -89,5 +91,78 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('customers');
+    }
+    public function emailupdate(Request $request)
+    {
+
+
+        $user = Auth::user();
+
+        $rules = [
+            'emailaddress' => 'required',
+            'confirmemailpassword' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        $validator->after(function ($validator) {
+
+            if (!Hash::check(request('confirmemailpassword'), auth()->user()->password)) {
+
+                $validator->errors()->add('confirmemailpassword', 'The password is incorrect. Email not changed');
+            }
+        });
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $user->email = request('emailaddress');
+        $user->save();
+        return redirect()->back()->with('emailsuccess', 'Your Email has been changed successfully');
+    }
+
+    public function password_update(Request $request)
+    {
+
+        $user = Auth::user();
+
+        $rules = [
+            'currentpassword' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        $validator->after(function ($validator) {
+
+            if (!Hash::check(request('currentpassword'), auth()->user()->password)) {
+
+                $validator->errors()->add('currentpassword', 'The password is incorrect');
+            }
+        });
+
+
+        $validator->after(function ($validator) {
+
+            $password = request('password');
+           
+            $password_confirmation = request('password_confirmation');
+
+            if ($password_confirmation != $password) {
+
+                $validator->errors()->add('password_confirmation', 'The password Confirmation does not match');
+            }
+        });
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $user->password = Hash::make(request('password'));
+        $user->save();
+
+        return redirect()->back()->with('success', 'Your password has been changed successfully');
     }
 }

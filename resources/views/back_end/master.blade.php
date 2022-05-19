@@ -254,10 +254,13 @@
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->
     <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
-
+    <script src="{{asset('assets/js/custom/apps/ecommerce/settings/settings.js') }}"></script>
+    <script src="{{asset('assets/js/custom/account/settings/signin-methods.js') }}"></script>
 
     
     @yield('countdown')
+      
+    @yield('java')
 
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->

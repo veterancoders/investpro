@@ -30,7 +30,6 @@ class SettingsController extends Controller
         }
 
 
-
         setting(["site_name" => request('site_name')])->save();
 
         setting(["site_description" => request('site_description')])->save();

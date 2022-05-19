@@ -5632,8 +5632,14 @@ fieldset:disabled .btn {
 
 .alert-success {
     color: #205237;
-    background-color: #dcf5e7;
-    border-color: #cbf0dc
+    background-color: #46e31e;
+    border-color: #a4c9b5;
+    width: 245px;
+    height: 78px;
+    position: fixed;
+    z-index: 100019;
+    right: 0px;
+    top: 8px;
 }
 
 .alert-success .alert-link {

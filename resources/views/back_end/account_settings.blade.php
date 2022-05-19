@@ -570,10 +570,162 @@
             <!--end::Content-->
         </div>
         <!--end::Basic info-->
+        <div class="card mb-5 mb-xl-10">
+      <!--begin::Card header-->
+      <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_signin_method">
+        <div class="card-title m-0">
+          <h3 class="fw-bolder m-0">Sign-in Method</h3>
+        </div>
+      </div>
+      <!--end::Card header-->
+      @if(session()->has('emailsuccess'))
+      <div class="alert alert-success" id="success-alert">
+      <h1 style="color: white; font-size:18px; text-align:center">{{ session()->get('emailsuccess') }}</h1>
+      </div>
+      @endif
 
+
+      <!--begin::Content-->
+      <div id="kt_account_settings_signin_method" class="collapse show">
+        <!--begin::Card body-->
+        <div class="card-body border-top p-9">
+          <!--begin::Email Address-->
+          <div class="d-flex flex-wrap align-items-center">
+            <!--begin::Label-->
+            <div id="kt_signin_email">
+              <div class="fs-6 fw-bolder mb-1">Email Address</div>
+              <div class="fw-bold text-gray-600">{{auth()->user()->email}}</div>
+            </div>
+            <!--end::Label-->
+            <!--begin::Edit-->
+            <div id="kt_signin_email_edit" class="flex-row-fluid d-none">
+              <!--begin::Form-->
+              <form class="form" novalidate="novalidate" method="GET" action="{{ route('emailupdate')}}">
+                @csrf
+
+                <div class="row mb-6">
+                  <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="fv-row mb-0">
+                      <label for="emailaddress" class="form-label fs-6 fw-bolder mb-3">Enter New Email Address</label>
+                      @error('emailaddress')
+                      <p style="color: red;">{{ $message  }}</p>
+                      @enderror
+                      <input type="email" class="form-control form-control-lg form-control-solid @error('emailaddress') is-invalid @enderror" id="emailaddress" placeholder="{{auth()->user()->email}}" name="emailaddress" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="fv-row mb-0">
+                      <label for="confirmemailpassword" class="form-label fs-6 fw-bolder mb-3">Confirm Password</label>
+                      @error('confirmemailpassword')
+                      <p style="color: red;">{{ $message  }}</p>
+                      @enderror
+                      <input type="password" class="form-control form-control-lg form-control-solid @error('confirmemailpassword') @enderror" name="confirmemailpassword" />
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex">
+                  <button type="submit" class="btn btn-primary me-2 px-6">Update Email</button>
+                  <button id="kt_signin_cancel" type="button" class="btn btn-color-gray-400 btn-active-light-primary px-6">Cancel</button>
+                </div>
+              </form>
+              <!--end::Form-->
+            </div>
+            <!--end::Edit-->
+            <!--begin::Action-->
+            <div id="kt_signin_email_button" class="ms-auto">
+              <button class="btn btn-light btn-active-light-primary">Change Email</button>
+            </div>
+            <!--end::Action-->
+          </div>
+          <!--end::Email Address-->
+          <!--begin::Separator-->
+          <div class="separator separator-dashed my-6"></div>
+
+          @if(session()->has('success'))
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">X</button>
+            {{ session()->get('success') }}
+          </div>
+          @endif
+
+          <!--end::Separator-->
+          <!--begin::Password-->
+          <div class="d-flex flex-wrap align-items-center mb-10">
+            <!--begin::Label-->
+            <div id="kt_signin_password">
+              <div class="fs-6 fw-bolder mb-1">Password</div>
+              <div class="fw-bold text-gray-600">**********</div>
+            </div>
+            <!--end::Label-->
+            <!--begin::Edit-->
+            <div id="kt_signin_password_edit" class="flex-row-fluid d-none">
+              <!--begin::Form-->
+              <form method="GET" action="{{ route('password_update') }}" class="form" novalidate="novalidate">
+                @csrf
+                <div class="row mb-1">
+                  <div class="col-lg-4">
+                    <div class="fv-row mb-0">
+                      <label for="currentpassword" class="form-label fs-6 fw-bolder mb-3">Current Password</label>
+                      @error('currentpassword')
+                      <p style="color: red;">{{ $message  }}</p>
+                      @enderror
+                      <input type="password" class="form-control form-control-lg form-control-solid @error('currentpassword') @enderror" name="currentpassword" id="currentpassword" />
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="fv-row mb-0">
+                      <label for="newpassword" class="form-label fs-6 fw-bolder mb-3">New Password</label>
+                      @error('password')
+                      <p style="color: red;">{{ $message  }}</p>
+                      @enderror
+                      <input type="password" class="form-control form-control-lg form-control-solid @error('password') @enderror" name="password" id="newpassword" />
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="fv-row mb-0">
+                      <label for="confirmpassword" class="form-label fs-6 fw-bolder mb-3">Confirm New Password</label>
+                      @error('password_confirmation')
+                      <p style="color: red;">{{ $message  }}</p>
+                      @enderror
+                      <input type="password" class="form-control form-control-lg form-control-solid @error('password_confirmation') @enderror" name="password_confirmation" id="confirmpassword" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-text mb-5">Password must be at least 8 character and contain symbols</div>
+                <div class="d-flex">
+                  <button type="submit" class="btn btn-primary me-2 px-6">Update Password</button>
+                  <button id="kt_password_cancel" type="button" class="btn btn-color-gray-400 btn-active-light-primary px-6">Cancel</button>
+                </div>
+              </form>
+              <!--end::Form-->
+            </div>
+            <!--end::Edit-->
+            <!--begin::Action-->
+            <div id="kt_signin_password_button" class="ms-auto">
+              <button class="btn btn-light btn-active-light-primary">Reset Password</button>
+            </div>
+            <!--end::Action-->
+          </div>
+         
+        </div>
+        <!--end::Card body-->
+      </div>
+      <!--end::Content-->
+    </div>
     </div>
     <!--end::Container-->
 </div>
 
 
+@endsection
+
+@section('java')
+
+<script>
+  $(document).ready(function() {
+    $("#success-alert").fadeTo(4000, 500).slideUp(800, function() {
+      $("#success-alert").slideUp(800);
+    });
+  });
+</script>
 @endsection

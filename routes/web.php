@@ -51,6 +51,11 @@ Route::get('/customers/{id}', [UserController::class, 'view'])->name('customer_s
 Route::get('/customers/{id}/edit', [UserController::class, 'edit'])->name('customer_edit')->middleware('auth');
 Route::post('/customer_account_update/{id}/edit', [UserController::class, 'update'])->name('customer_account_update')->middleware('auth');
 Route::get('/customers/{id}/delete', [UserController::class, 'delete'])->name('customer_delete')->middleware('auth');
+Route::get('emailupdate', [UserController::class, 'emailupdate'])->name('emailupdate');
+Route::get('password_update', [UserController::class, 'password_update'])->name('password_update');
+
+
+
 
 //plans..................///....
 //1. Pland List
